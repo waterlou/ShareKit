@@ -14,8 +14,8 @@
 // App Description
 // These values are used by any service that shows 'shared from XYZ'
 
-#define SHKMyAppName			@"My App Name"
-#define SHKMyAppURL				@"http://example.com"
+#define SHKMyAppName			@"HK Road Info"
+#define SHKMyAppURL				@"http://www.waterworld.com.hk"
 
 
 
@@ -36,6 +36,16 @@
  leaving that decision up to the user.
  */
 
+// Evernote - http://www.evernote.com/about/developer/api/
+
+#define SHKEvernoteUserStoreURL    @"https://sandbox.evernote.com/edam/user"
+#define SHKEvernoteNetStoreURLBase @"http://sandbox.evernote.com/edam/note/"
+#define SHKEvernoteConsumerKey   @""
+#define SHKEvernoteSecretKey     @""
+// If your Consumer Key is activated by Evernote support,
+// change these constants following.
+//#define kEvernoteUserStoreURL    @"https://www.evernote.com/edam/user"
+//#define kEvernoteNetStoreURLBase @"http://www.evernote.com/edam/note/"
 
 
 // Delicious - https://developer.apps.yahoo.com/projects
@@ -46,8 +56,8 @@
 // If SHKFacebookUseSessionProxy is enabled then SHKFacebookSecret is ignored and should be left blank
 
 #define SHKFacebookUseSessionProxy  NO 
-#define SHKFacebookKey				@""
-#define SHKFacebookSecret			@""
+#define SHKFacebookKey				@"149916525074020"
+#define SHKFacebookSecret			@"112de019cb5e3e3a0e8b0b900af83585"
 #define SHKFacebookSessionProxyURL  @""
 
 // Read It Later - http://readitlaterlist.com/api/?shk
@@ -69,9 +79,9 @@
  2. 'Application Type' should be set to BROWSER (not client)
  3. 'Callback URL' should match whatever you enter in SHKTwitterCallbackUrl.  The callback url doesn't have to be an actual existing url.  The user will never get to it because ShareKit intercepts it before the user is redirected.  It just needs to match.
  */
-#define SHKTwitterConsumerKey		@""
-#define SHKTwitterSecret			@""
-#define SHKTwitterCallbackUrl		@"" // You need to set this if using OAuth, see note above (xAuth users can skip it)
+#define SHKTwitterConsumerKey		@"IwKMr7NyQ032cTIpaxZ6jQ"
+#define SHKTwitterSecret			@"05rmF4phMmsiDvxPaJPTCrB59leMdEVsGiuoeecM"
+#define SHKTwitterCallbackUrl		@"http://waterworld.com.hk/twitter_callback" // You need to set this if using OAuth, see note above (xAuth users can skip it)
 #define SHKTwitterUseXAuth			0 // To use xAuth, set to 1
 #define SHKTwitterUsername			@"" // Enter your app's twitter account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
 

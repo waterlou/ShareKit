@@ -89,3 +89,11 @@
 
 "Access Error" = "アクセスエラー";
 "There was an error while sharing" = "共有にエラーが発生しました";
+
+"Sharing a Link" = "リンクを共有する";
+"Sharing an Image" = "イメージを共有する";
+"Sharing Text" = "テキストを共有する";
+"Sharing a File" = "ファイルを共有する";
+"Logout of All Services" = "すべてのサービスからログアウト";
+"Save to Photo Album" = "フォトアルバムに保存";
+"Image + " = "画像 + ";

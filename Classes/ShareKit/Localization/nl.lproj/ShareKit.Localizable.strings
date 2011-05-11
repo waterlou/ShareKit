@@ -60,7 +60,7 @@
 
 "Incorrect username and password" = "Gebruikersnaam en wachtwoord niet goed";
 "There was an error logging into Google Reader" = "Er trad een fout op bij het inloggen bij Google Reader";
-"There was a problem authenticating your account." = "Er was een probleem bij het verifiëren van het account.";
+"There was a problem authenticating your account." = "Er was een probleem bij het verifi√´ren van het account.";
 "There was a problem saving your note." = "Er was een probleem bij het bewaren van de notitie.";
 
 "There was a problem saving to Delicious." = "Er was een probleem bij het bewaren op Delicious.";
@@ -89,3 +89,11 @@
 
 "Access Error" = "Toegangs Error";
 "There was an error while sharing" = "Er trad een fout op bij het delen";
+
+"Sharing a Link" = "Het delen van een Link";
+"Sharing an Image" = "Het delen van een afbeelding";
+"Sharing Text" = "Het delen van tekst";
+"Sharing a File" = "Delen van een bestand";
+"Logout of All Services" = "Afmelden van alle diensten";
+"Save to Photo Album" = "Slaan naar Photo Album";
+"Image + " = "Beeld + ";

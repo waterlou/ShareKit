@@ -89,3 +89,12 @@
 
 "Access Error" = "접근 오류";
 "There was an error while sharing" = "공유 중에 오류가 발생했습니다";
+
+
+"Sharing a Link" = "링크를 공유";
+"Sharing an Image" = "이미지 공유";
+"Sharing Text" = "텍스트 공유";
+"Sharing a File" = "파일 공유";
+"Logout of All Services" = "모든 서비스의 로그아웃";
+"Save to Photo Album" = "사진 앨범에 저장";
+"Image + " = "이미지 + ";

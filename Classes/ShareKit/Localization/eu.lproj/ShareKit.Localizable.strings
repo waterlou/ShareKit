@@ -40,6 +40,7 @@
 "Create an account at %@" = "%@ kontua eratu";
 
 "Send to Twitter" = "Twittera bidali";
+"Image + " = "Image + ";
 
 "Message is too long" = "Mezua luzeegia da";
 "Twitter posts can only be 140 characters in length." = "Mezuak Twitterren 140 karaktere baino ezin dute izan.";
@@ -89,3 +90,11 @@
 
 "Access Error" = "Sartze errorea";
 "There was an error while sharing" = "Errore bat egon da konpartitzean";
+
+"Sharing a Link" = "Link partekatzea";
+"Sharing an Image" = "Irudi bat Sharing";
+"Sharing Text" = "Testu Sharing";
+"Sharing a File" = "Fitxategi partekatzea";
+"Logout of All Services" = "Todos los servicios de Logout";
+"Save to Photo Album" = "Argazkia Album Save";
+"Image + " = "Irudia + ";

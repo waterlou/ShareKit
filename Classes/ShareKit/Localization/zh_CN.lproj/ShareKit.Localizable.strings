@@ -1,15 +1,15 @@
 "Email" = "电子邮件";
 "Username" = "用户名";
 "Password" = "密码";
-"Follow %@" = "关注%@";
+"Follow %@" = "关注 %@";
 "Continue" = "继续";
 "Share" = "分享";
-"More..." = "更多…";
+"More..." = "更多...";
 "Cancel" = "取消";
 "Slug" = "Slug";
-"Private" = "私有";
+"Private" = "私人";
 "Public" = "公开";
-"Caption" = "标题";
+"Caption" = "說明";
 "Title" = "标题";
 "Tags" = "标签";
 "Close" = "关闭";
@@ -28,12 +28,12 @@
 "Offline" = "离线";
 "Error" = "错误";
 "Login" = "登录";
-"Logging In..." = "登录中…";
+"Logging In..." = "登录中...";
 "Login Error" = "登录出错";
-"Connecting..." = "连接中…";
+"Connecting..." = "连接中...";
 
 
-"Shortening URL..." = "缩短网址…";
+"Shortening URL..." = "缩短网址...";
 "Shorten URL Error" = "缩短网址出错";
 "We could not shorten the URL." = "我们无法缩短网址。";
 
@@ -85,10 +85,16 @@
 "Authorize Error" = "验证错误";
 "There was an error while authorizing" = "验证的过程中出错";
 
-"Authenticating..." = "验证中…";
+"Authenticating..." = "验证中...";
 "There was a problem requesting access from %@" = "从 %@ 获取口令出错";
 
 "Access Error" = "访问错误";
 "There was an error while sharing" = "在分享的过程中出错";
 
-"Save to Photo Album" = "保存到相簿";
+"Sharing a Link" = "分享鏈接";
+"Sharing an Image" = "分享圖像";
+"Sharing Text" = "分享文字";
+"Sharing a File" = "分享檔案";
+"Logout of All Services" = "登出所有服務";
+"Save to Photo Album" = "储存到照片相簿";
+"Image + " = "影像 + ";
