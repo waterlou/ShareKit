@@ -56,6 +56,7 @@
 // If SHKFacebookUseSessionProxy is enabled then SHKFacebookSecret is ignored and should be left blank
 
 #define SHKFacebookUseSessionProxy  NO 
+#define SHKFacebookAppID            @"149916525074020"
 #define SHKFacebookKey				@"149916525074020"
 #define SHKFacebookSecret			@"112de019cb5e3e3a0e8b0b900af83585"
 #define SHKFacebookSessionProxyURL  @""
@@ -95,6 +96,10 @@
 // Append 'Shared With 'Signature to Email (and related forms)
 #define SHKSharedWithSignature		0
 
+// Flickr
+
+#define OBJECTIVE_FLICKR_SAMPLE_API_KEY @""
+#define OBJECTIVE_FLICKR_SAMPLE_API_SHARED_SECRET @""
 
 
 /*

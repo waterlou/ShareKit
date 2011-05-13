@@ -1,8 +1,8 @@
 //
-//  SHKFacebook.h
+//  SHKTwitter.h
 //  ShareKit
 //
-//  Created by Nathan Weiner on 6/18/10.
+//  Created by Nathan Weiner on 6/21/10.
 
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,27 +26,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SHKSharer.h"
-#import "FBConnect.h"
+#import "SHKOAuthSharer.h"
+#import "SHKTwitterForm.h"
+#import "ObjectiveFlickr.h"
 
-typedef enum 
-{
-	SHKFacebookPendingNone,
-	SHKFacebookPendingLogin,
-	SHKFacebookPendingStatus,
-	SHKFacebookPendingImage
-} SHKFacebookPendingAction;
-
-
-@interface SHKFacebook : SHKSharer <FBSessionDelegate, FBDialogDelegate, FBRequestDelegate>
-{
-	FBSession *session;
-	SHKFacebookPendingAction pendingFacebookAction;
-	FBLoginDialog *login;
+@interface SHKFlickr : SHKSharer 
+{	
+    OFFlickrAPIContext *flickrContext;
+	OFFlickrAPIRequest *flickrRequest;    
 }
 
-@property (retain) FBSession *session;
-@property SHKFacebookPendingAction pendingFacebookAction;
-@property (retain) FBLoginDialog *login;
+
+#pragma mark -
+#pragma mark UI Implementation
+
+
+#pragma mark -
+#pragma mark Share API Methods
 
 @end

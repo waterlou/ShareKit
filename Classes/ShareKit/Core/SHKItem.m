@@ -40,6 +40,10 @@
 @synthesize URL, image, title, text, tags, data, mimeType, filename;
 @synthesize custom;
 
+-(id) init {
+    [super init];
+    return self;
+}
 - (void)dealloc
 {
 	[URL release];
@@ -140,6 +144,7 @@
 
 + (SHKItem *)itemFromDictionary:(NSDictionary *)dictionary
 {
+    //NSLog(@"itemFromDictionary %@", dictionary);
 	SHKItem *item = [[SHKItem alloc] init];
 	item.shareType = [[dictionary objectForKey:@"shareType"] intValue];	
 	
@@ -149,6 +154,7 @@
 	item.title = [dictionary objectForKey:@"title"];
 	item.text = [dictionary objectForKey:@"text"];
 	item.tags = [dictionary objectForKey:@"tags"];	
+	//item.image = [dictionary objectForKey:@"image"];     // not able to save image to dictionary
 		
 	if ([dictionary objectForKey:@"custom"] != nil)
 		item.custom = [[[dictionary objectForKey:@"custom"] mutableCopy] autorelease];
@@ -158,7 +164,7 @@
 
 - (NSDictionary *)dictionaryRepresentation
 {
-	NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:0];
+	NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
 		
 	[dictionary setObject:[NSNumber numberWithInt:shareType] forKey:@"shareType"];
 	
@@ -177,8 +183,14 @@
 	if (tags != nil)
 		[dictionary setObject:tags forKey:@"tags"];
 	
+     if (image != nil)
+         [NSException raise:@"dictionaryRepresentation" format:@"Can't convert to dictionary of image exists"];
+//        [dictionary setObject:image forKey:@"image"];
+    
 	// If you add anymore, make sure to add a method for retrieving them to the itemWithDictionary function too
 	
+    NSLog(@"dictionaryRepresentation %@", dictionary);
+    
 	return dictionary;
 }
 
