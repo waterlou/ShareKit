@@ -29,30 +29,39 @@
 
 
 #import "SHKFlickr.h"
+#import "NSString+Base58.h"
 
-static const NSString *kStoredAuthTokenKeyName = @"FlickrStoredAuthTokenKeyName";
+static NSString *kStoredAuthTokenKeyName = @"FlickrStoredAuthTokenKeyName";
+static NSString *kUploadImageStep = @"kUploadImageStep";
 
 @implementation SHKFlickr
+
+@synthesize flickrLink, tags;
+@synthesize privacy;
 
 - (id)init
 {
     self = [super init];
 	if (self)
 	{	
+		privacy = 3;	// default public photo
 	}	
 	return self;
 }
 
 - (void) dealloc {
-    [flickrContext release];
-    [flickrRequest release];
+	[flickrContext release];
+	[requestDialog release];
+	self.flickrLink = nil;
+	self.tags = nil;
+	
     [super dealloc];
 }
 
 - (OFFlickrAPIContext *)flickrContext
 {
     if (!flickrContext) {
-        flickrContext = [[OFFlickrAPIContext alloc] initWithAPIKey:OBJECTIVE_FLICKR_SAMPLE_API_KEY sharedSecret:OBJECTIVE_FLICKR_SAMPLE_API_SHARED_SECRET];
+        flickrContext = [[OFFlickrAPIContext alloc] initWithAPIKey:OBJECTIVE_FLICKR_API_KEY sharedSecret:OBJECTIVE_FLICKR_API_SHARED_SECRET];
         
         NSString *authToken = authToken = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredAuthTokenKeyName];
         if (authToken) {
@@ -61,6 +70,16 @@ static const NSString *kStoredAuthTokenKeyName = @"FlickrStoredAuthTokenKeyName"
     }
     
     return flickrContext;
+}
+
+- (SHKFlickrRequestDialog*) requestDialog {
+    if (!requestDialog) {
+        requestDialog = [[SHKFlickrRequestDialog alloc] init];
+		requestDialog.flickrContext = self.flickrContext;
+		requestDialog.delegate = self;
+    }
+    
+    return requestDialog;
 }
 
 #pragma mark -
@@ -101,11 +120,12 @@ static const NSString *kStoredAuthTokenKeyName = @"FlickrStoredAuthTokenKeyName"
 
 - (BOOL)isAuthorized
 {		
-    return NO;
+    return [self.requestDialog login: NO];
 }
 
 - (void)promptAuthorization
 {		
+	[self.requestDialog login: YES];
 }
 
 
@@ -183,35 +203,87 @@ static const NSString *kStoredAuthTokenKeyName = @"FlickrStoredAuthTokenKeyName"
 }
  */
 
+- (void) sendImage {
+	
+	UIImage *image = item.image;
+	NSData *JPEGData = UIImageJPEGRepresentation(image, 0.8);	
+	self.requestDialog.flickrRequest.delegate = self;
+	self.requestDialog.flickrRequest.sessionInfo = kUploadImageStep;
+    NSMutableDictionary *args = [NSMutableDictionary dictionaryWithCapacity:3];
+    switch (privacy) {
+        case 1:
+            [args setObject:@"1" forKey:@"is_family"]; break;
+        case 2:
+            [args setObject:@"1" forKey:@"is_friend"]; break;
+        case 3:
+            [args setObject:@"1" forKey:@"is_public"]; break;
+    }
+    if (self.title) [args setObject:self.title forKey:@"description"];
+    if (tags) [args setObject:tags forKey:@"tags"];
+	[self.requestDialog.flickrRequest uploadImageStream:[NSInputStream inputStreamWithData:JPEGData] suggestedFilename:item.title MIMEType:@"image/jpeg" arguments:args];
+}
+
 #pragma mark OFFlickrAPIRequest delegate methods
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary
 {
-	if (inRequest.sessionInfo == kGetAuthTokenStep) {
-		[self setAndStoreFlickrAuthToken:[[inResponseDictionary valueForKeyPath:@"auth.token"] textContent]];
-		self.flickrUserName = [inResponseDictionary valueForKeyPath:@"auth.user.username"];
+	NSLog(@"%s %@ %@", __PRETTY_FUNCTION__, inRequest.sessionInfo, inResponseDictionary);
+	if (inRequest.sessionInfo == kUploadImageStep) {
+		NSString *photoID = [[inResponseDictionary valueForKeyPath:@"photoid"] textContent];
+		//NSLog(@"shorten url = http://flic.kr/p/%@", [NSString base58_Encode:[photoID longLongValue]]);
+		self.flickrLink = [NSString stringWithFormat:@" http://flic.kr/p/%@", [NSString base58_Encode:[photoID longLongValue]]];
+        
+	}	
+	/*
+	else if (inRequest.sessionInfo == kGetPhotoURLStep) {
+		NSString *url = [[[[[inResponseDictionary objectForKey:@"photo"] objectForKey:@"urls"] objectForKey:@"url"] objectAtIndex:0] objectForKey:@"_text"];
+		NSLog(@"%@", url);
+		
 	}
-	else if (inRequest.sessionInfo == kCheckTokenStep) {
-		self.flickrUserName = [inResponseDictionary valueForKeyPath:@"auth.user.username"];
-	}
+	 */
+	[self sendDidFinish];
 	
-	[activityIndicator stopAnimating];
-	[progressView removeFromSuperview];
-	[[NSNotificationCenter defaultCenter] postNotificationName:SnapAndRunShouldUpdateAuthInfoNotification object:self];
 }
 
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError
 {
-	if (inRequest.sessionInfo == kGetAuthTokenStep) {
+#if 0
+	NSLog(@"%s %@ %@", __PRETTY_FUNCTION__, inRequest.sessionInfo, inError);
+	if (inRequest.sessionInfo == kUploadImageStep) {
+		[self updateUserInterface:nil];
+		snapPictureDescriptionLabel.text = NSLocalizedString(@"Failed", @"label");		
+		[UIApplication sharedApplication].idleTimerDisabled = NO;
+		
+		[[[[UIAlertView alloc] initWithTitle:@"API Failed" message:[inError description] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] autorelease] show];
+		
 	}
-	else if (inRequest.sessionInfo == kCheckTokenStep) {
-		[self setAndStoreFlickrAuthToken:nil];
+	else {
+		[[[[UIAlertView alloc] initWithTitle:@"API Failed" message:[inError description] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] autorelease] show];
 	}
-	
-	[activityIndicator stopAnimating];
-	[progressView removeFromSuperview];
-    
-	[[[[UIAlertView alloc] initWithTitle:@"API Failed" message:[inError description] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] autorelease] show];
-	[[NSNotificationCenter defaultCenter] postNotificationName:SnapAndRunShouldUpdateAuthInfoNotification object:self];
+#endif
+	[self sendDidFailWithError:inError];	
+}
+
+- (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest imageUploadSentBytes:(NSUInteger)inSentBytes totalBytes:(NSUInteger)inTotalBytes
+{
+	// progress
+#if 0
+	if (inSentBytes == inTotalBytes) {
+		snapPictureDescriptionLabel.text = @"Waiting for Flickr...";
+	}
+	else {
+		snapPictureDescriptionLabel.text = [NSString stringWithFormat:@"%lu/%lu (KB)", inSentBytes / 1024, inTotalBytes / 1024];
+	}
+#endif
+}
+
+#pragma mark authoize
+
+-(void) flickrAuthorize:(SHKFlickrRequestDialog*)dialog didComplete:(OFFlickrAPIContext*)context {
+	[self sendImage];
+}
+
+/* failed to authorize */
+-(void) flickrAuthorize:(SHKFlickrRequestDialog*)dialog didFailWithError:(NSError*) error {
 }
 
 @end

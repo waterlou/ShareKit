@@ -29,12 +29,23 @@
 #import "SHKOAuthSharer.h"
 #import "SHKTwitterForm.h"
 #import "ObjectiveFlickr.h"
+#import "SHKFlickrRequestDialog.h"
 
-@interface SHKFlickr : SHKSharer 
+@interface SHKFlickr : SHKSharer <SHKFlickrRequestDialogControllerDelegate>
 {	
-    OFFlickrAPIContext *flickrContext;
-	OFFlickrAPIRequest *flickrRequest;    
+	// context of Flickr
+    OFFlickrAPIContext *flickrContext;	
+	// requestDialog handle, also show get the FLickrRequest inside
+	SHKFlickrRequestDialog *requestDialog;
+	
+	NSString *flickrLink;	// shorten result link
+	NSString *tags;	// optional tags
+	int privacy;	// privacy flag
 }
+
+@property (nonatomic, copy) NSString *flickrLink;
+@property (nonatomic, copy) NSString *tags;
+@property (nonatomic) int privacy;
 
 
 #pragma mark -
