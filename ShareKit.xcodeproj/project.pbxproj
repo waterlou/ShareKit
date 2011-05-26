@@ -100,6 +100,7 @@
 		49247987137C331E00F423DE /* OFXMLMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4924797F137C331E00F423DE /* OFXMLMapper.m */; };
 		49247988137C331E00F423DE /* SHKFlickr.m in Sources */ = {isa = PBXBuildFile; fileRef = 49247981137C331E00F423DE /* SHKFlickr.m */; };
 		4924798B137C34BF00F423DE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4924798A137C34BF00F423DE /* CFNetwork.framework */; };
+		49375632138B942E003F594D /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49375631138B942E003F594D /* ShareKit.bundle */; };
 		49559CBB137CB68400BAF754 /* SHKFBLikeDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 49559CB9137CB68400BAF754 /* SHKFBLikeDialog.m */; };
 		49559CCF137CB6E700BAF754 /* SHKFlickrRequestDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 49559CCD137CB6E700BAF754 /* SHKFlickrRequestDialog.m */; };
 		49559CD1137CB74F00BAF754 /* SocialMedia.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49559CD0137CB74F00BAF754 /* SocialMedia.bundle */; };
@@ -302,6 +303,7 @@
 		49247980137C331E00F423DE /* SHKFlickr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKFlickr.h; sourceTree = "<group>"; };
 		49247981137C331E00F423DE /* SHKFlickr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKFlickr.m; sourceTree = "<group>"; };
 		4924798A137C34BF00F423DE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		49375631138B942E003F594D /* ShareKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareKit.bundle; sourceTree = "<group>"; };
 		49559CB9137CB68400BAF754 /* SHKFBLikeDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKFBLikeDialog.m; sourceTree = "<group>"; };
 		49559CBA137CB68400BAF754 /* SHKFBLikeDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKFBLikeDialog.h; sourceTree = "<group>"; };
 		49559CCD137CB6E700BAF754 /* SHKFlickrRequestDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKFlickrRequestDialog.m; sourceTree = "<group>"; };
@@ -321,7 +323,6 @@
 		49C40963137A5E0000DAE4DA /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = zh_TW.lproj/ShareKit.Localizable.strings; sourceTree = "<group>"; };
 		49C40967137A65F600DAE4DA /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		49C40968137A65F600DAE4DA /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
-		49C40969137A65F600DAE4DA /* facebook_ios_sdk_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebook_ios_sdk_Prefix.pch; sourceTree = "<group>"; };
 		49C4096A137A65F600DAE4DA /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
 		49C4096B137A65F600DAE4DA /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
 		49C4096C137A65F600DAE4DA /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDialog.h; sourceTree = "<group>"; };
@@ -823,6 +824,7 @@
 		43A536ED11DBE3B9004A1712 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				49375631138B942E003F594D /* ShareKit.bundle */,
 				49559CD0137CB74F00BAF754 /* SocialMedia.bundle */,
 				49559CB9137CB68400BAF754 /* SHKFBLikeDialog.m */,
 				49559CBA137CB68400BAF754 /* SHKFBLikeDialog.h */,
@@ -964,7 +966,6 @@
 			children = (
 				49C40967137A65F600DAE4DA /* Facebook.h */,
 				49C40968137A65F600DAE4DA /* Facebook.m */,
-				49C40969137A65F600DAE4DA /* facebook_ios_sdk_Prefix.pch */,
 				49C4096A137A65F600DAE4DA /* FBConnect.h */,
 				49C4096B137A65F600DAE4DA /* FBDialog.bundle */,
 				49C4096C137A65F600DAE4DA /* FBDialog.h */,
@@ -1068,6 +1069,7 @@
 				49C40985137A65F600DAE4DA /* FBDialog.bundle in Resources */,
 				49247982137C331E00F423DE /* ObjectiveFlickr.bridgesupport in Resources */,
 				49559CD1137CB74F00BAF754 /* SocialMedia.bundle in Resources */,
+				49375632138B942E003F594D /* ShareKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

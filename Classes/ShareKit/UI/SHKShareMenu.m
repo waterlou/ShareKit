@@ -87,7 +87,7 @@
 - (void)rebuildTableDataAnimated:(BOOL)animated
 {
 	self.tableView.allowsSelectionDuringEditing = YES;
-	self.tableData = [NSMutableArray arrayWithCapacity:0];
+	self.tableData = [NSMutableArray arrayWithCapacity:2];
 	[tableData addObject:[self section:@"actions"]];
 	[tableData addObject:[self section:@"services"]];
 		
@@ -213,6 +213,9 @@
     
 	NSDictionary *rowData = [self rowDataAtIndexPath:indexPath];
 	cell.textLabel.text = [rowData objectForKey:@"name"];
+    
+    UIImage *icon = [UIImage imageNamed: [NSString stringWithFormat: @"ShareKit.bundle/%@.png", [rowData objectForKey:@"className"]]];    
+    cell.imageView.image = icon;
 	
 	if (cell.editingAccessoryView == nil)
 	{

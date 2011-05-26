@@ -42,6 +42,13 @@
 	[super dealloc];
 }
 
+- (void) addIcon : (UIImage*) image index : (NSInteger) index {
+    UIView *button = [self viewWithTag: index];
+    UIImageView *icon  =[[[UIImageView alloc] initWithImage: image] autorelease];
+    icon.center = CGPointMake(28.0f, 22.0f);
+    [button addSubview: icon];
+}
+
 + (SHKActionSheet *)actionSheetForType:(SHKShareType)type
 {
 	SHKActionSheet *as = [[SHKActionSheet alloc] initWithTitle:SHKLocalizedString(@"Share")
@@ -64,6 +71,11 @@
 		if ([class canShare])
 		{
 			[as addButtonWithTitle: [class sharerTitle] ];
+            // add icon if existed
+            UIImage *icon = [UIImage imageNamed: [NSString stringWithFormat: @"ShareKit.bundle/%@.png", sharerId]];
+            if (icon) {
+                [as addIcon:icon index:as.numberOfButtons];
+            }
 			[as.sharers addObject:sharerId];
 		}
 	}

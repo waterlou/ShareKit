@@ -39,13 +39,15 @@
 	SHKFlickrRequestDialog *requestDialog;
 	
 	NSString *flickrLink;	// shorten result link
-	NSString *tags;	// optional tags
-	int privacy;	// privacy flag
+	//NSString *tags;	// optional tags
+	//int privacy;	// privacy flag
+    
+    BOOL isAuthorized;
 }
 
 @property (nonatomic, copy) NSString *flickrLink;
-@property (nonatomic, copy) NSString *tags;
-@property (nonatomic) int privacy;
+//@property (nonatomic, copy) NSString *tags;
+//@property (nonatomic) int privacy;
 
 
 #pragma mark -

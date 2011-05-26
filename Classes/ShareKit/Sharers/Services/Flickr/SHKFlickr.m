@@ -36,15 +36,16 @@ static NSString *kUploadImageStep = @"kUploadImageStep";
 
 @implementation SHKFlickr
 
-@synthesize flickrLink, tags;
-@synthesize privacy;
+@synthesize flickrLink;
+//@synthesize tags;
+//@synthesize privacy;
 
 - (id)init
 {
     self = [super init];
 	if (self)
 	{	
-		privacy = 3;	// default public photo
+		//privacy = 3;	// default public photo
 	}	
 	return self;
 }
@@ -53,7 +54,7 @@ static NSString *kUploadImageStep = @"kUploadImageStep";
 	[flickrContext release];
 	[requestDialog release];
 	self.flickrLink = nil;
-	self.tags = nil;
+	//self.tags = nil;
 	
     [super dealloc];
 }
@@ -109,17 +110,20 @@ static NSString *kUploadImageStep = @"kUploadImageStep";
 #pragma mark -
 #pragma mark Configuration : Dynamic Enable
 
-- (BOOL)shouldAutoShare
-{
-	return NO;
++ (BOOL)canShare{
+	return YES;
 }
 
+- (BOOL)shouldAutoShare{
+	return NO;
+}
 
 #pragma mark -
 #pragma mark Authorization
 
 - (BOOL)isAuthorized
 {		
+    if (isAuthorized) return YES;   // connect to server already
     return [self.requestDialog login: NO];
 }
 
@@ -132,6 +136,7 @@ static NSString *kUploadImageStep = @"kUploadImageStep";
 #pragma mark -
 #pragma mark UI Implementation
 
+/*
 - (void)show
 {
 	if (item.shareType == SHKShareTypeImage)
@@ -140,6 +145,7 @@ static NSString *kUploadImageStep = @"kUploadImageStep";
 		//[self showTwitterForm];
 	}
 }
+ */
 
 /*
 - (void)showTwitterForm
@@ -166,6 +172,40 @@ static NSString *kUploadImageStep = @"kUploadImageStep";
 */
 
 #pragma mark -
+#pragma mark -
+#pragma mark Share Form
+
+- (NSArray *)shareFormFieldsForType:(SHKShareType)type{
+    NSMutableArray *baseArray = [NSMutableArray arrayWithObjects:
+                                 [SHKFormFieldSettings label:SHKLocalizedString(@"Tags")
+                                                         key:@"tags"
+                                                        type:SHKFormFieldTypeText
+                                                       start:item.tags],
+                                 [SHKFormFieldSettings label:SHKLocalizedString(@"Private")
+                                                         key:@"private"
+                                                        type:SHKFormFieldTypeSwitch
+                                                       start:SHKFormFieldSwitchOff],
+                                 [SHKFormFieldSettings label:SHKLocalizedString(@"Send to Twitter")
+                                                         key:@"twitter"
+                                                        type:SHKFormFieldTypeSwitch
+                                                       start:SHKFormFieldSwitchOff],
+                                 nil
+                                 ];
+    if([item shareType] == SHKShareTypeImage){
+        [baseArray insertObject:[SHKFormFieldSettings label:SHKLocalizedString(@"Caption")
+                                                        key:@"caption"
+                                                       type:SHKFormFieldTypeText
+                                                      start:nil] 
+                        atIndex:0];
+    }else{
+        [baseArray insertObject:[SHKFormFieldSettings label:SHKLocalizedString(@"Title")
+                                                        key:@"title"
+                                                       type:SHKFormFieldTypeText
+                                                      start:item.title]
+                        atIndex:0];
+    }
+    return baseArray;
+}
 
 #pragma mark Share API Methods
 
@@ -202,7 +242,6 @@ static NSString *kUploadImageStep = @"kUploadImageStep";
 	return NO;
 }
  */
-
 - (void) sendImage {
 	
 	UIImage *image = item.image;
@@ -210,18 +249,40 @@ static NSString *kUploadImageStep = @"kUploadImageStep";
 	self.requestDialog.flickrRequest.delegate = self;
 	self.requestDialog.flickrRequest.sessionInfo = kUploadImageStep;
     NSMutableDictionary *args = [NSMutableDictionary dictionaryWithCapacity:3];
+    int privacy = 3;
+    
+    privacy = [item customBoolForSwitchKey:@"private"] ? 1 : 3;
+    
     switch (privacy) {
         case 1:
             [args setObject:@"1" forKey:@"is_family"]; break;
         case 2:
-            [args setObject:@"1" forKey:@"is_friend"]; break;
+            [args setObject:@"2" forKey:@"is_friend"]; break;
         case 3:
-            [args setObject:@"1" forKey:@"is_public"]; break;
+            [args setObject:@"3" forKey:@"is_public"]; break;
     }
-    if (self.title) [args setObject:self.title forKey:@"description"];
+    
+    NSString *description = [item customValueForKey:@"caption"];    
+    if (description) [args setObject:description forKey:@"description"];
+    
+    NSString *tags = [item tags];
     if (tags) [args setObject:tags forKey:@"tags"];
 	[self.requestDialog.flickrRequest uploadImageStream:[NSInputStream inputStreamWithData:JPEGData] suggestedFilename:item.title MIMEType:@"image/jpeg" arguments:args];
 }
+
+- (BOOL) send {
+	if ([self validateItem]) {
+		if (item.shareType == SHKShareTypeImage) {
+			[self sendImage];
+            
+            [self sendDidStart];
+            
+            return YES;
+        }
+    }    
+    return NO;
+}
+
 
 #pragma mark OFFlickrAPIRequest delegate methods
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary
@@ -279,7 +340,10 @@ static NSString *kUploadImageStep = @"kUploadImageStep";
 #pragma mark authoize
 
 -(void) flickrAuthorize:(SHKFlickrRequestDialog*)dialog didComplete:(OFFlickrAPIContext*)context {
-	[self sendImage];
+    
+//Error: share will call authorize that will call flickr to authorize again...
+    isAuthorized = YES;
+	[self share];
 }
 
 /* failed to authorize */
