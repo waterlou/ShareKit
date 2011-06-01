@@ -68,11 +68,17 @@
 		43C91D1D11EB963600F31FAE /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C91D1C11EB963600F31FAE /* MainWindow-iPad.xib */; };
 		43D1DEF011D5CDD200550D75 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D1DEEF11D5CDD200550D75 /* SystemConfiguration.framework */; };
 		43EF406E11D3FFF800B1F700 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EF406D11D3FFF800B1F700 /* Security.framework */; };
+		4923AD9A139650B2003C1E3F /* SHKPosterous.m in Sources */ = {isa = PBXBuildFile; fileRef = 4923AD92139650B2003C1E3F /* SHKPosterous.m */; };
+		4923AD9B139650B2003C1E3F /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4923AD95139650B2003C1E3F /* JSONKit.m */; };
+		4923AD9C139650B2003C1E3F /* SHKPlurk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4923AD97139650B2003C1E3F /* SHKPlurk.m */; };
+		4923AD9D139650B2003C1E3F /* SHKPlurkForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4923AD99139650B2003C1E3F /* SHKPlurkForm.m */; };
 		4924798B137C34BF00F423DE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4924798A137C34BF00F423DE /* CFNetwork.framework */; };
 		49375632138B942E003F594D /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49375631138B942E003F594D /* ShareKit.bundle */; };
 		49559CBB137CB68400BAF754 /* SHKFBLikeDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 49559CB9137CB68400BAF754 /* SHKFBLikeDialog.m */; };
 		49559CD1137CB74F00BAF754 /* SocialMedia.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49559CD0137CB74F00BAF754 /* SocialMedia.bundle */; };
 		49559D03137CD7B300BAF754 /* NSString+Base58.m in Sources */ = {isa = PBXBuildFile; fileRef = 49559D02137CD7B300BAF754 /* NSString+Base58.m */; };
+		49799D6F13961A130059F2CA /* SHKWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 49799D6C13961A130059F2CA /* SHKWeibo.m */; };
+		49799D7013961A130059F2CA /* SHKWeiboForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 49799D6E13961A130059F2CA /* SHKWeiboForm.m */; };
 		49A92C58138EB03600C8DDAF /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A92B9B138EB03500C8DDAF /* NSObject+SBJSON.m */; };
 		49A92C59138EB03600C8DDAF /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A92B9D138EB03500C8DDAF /* NSString+SBJSON.m */; };
 		49A92C5A138EB03600C8DDAF /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A92B9F138EB03500C8DDAF /* SBJSON.m */; };
@@ -273,6 +279,14 @@
 		43C91D1C11EB963600F31FAE /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		43D1DEEF11D5CDD200550D75 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		43EF406D11D3FFF800B1F700 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4923AD91139650B2003C1E3F /* SHKPosterous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKPosterous.h; sourceTree = "<group>"; };
+		4923AD92139650B2003C1E3F /* SHKPosterous.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKPosterous.m; sourceTree = "<group>"; };
+		4923AD94139650B2003C1E3F /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		4923AD95139650B2003C1E3F /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		4923AD96139650B2003C1E3F /* SHKPlurk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKPlurk.h; sourceTree = "<group>"; };
+		4923AD97139650B2003C1E3F /* SHKPlurk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKPlurk.m; sourceTree = "<group>"; };
+		4923AD98139650B2003C1E3F /* SHKPlurkForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKPlurkForm.h; sourceTree = "<group>"; };
+		4923AD99139650B2003C1E3F /* SHKPlurkForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKPlurkForm.m; sourceTree = "<group>"; };
 		4924798A137C34BF00F423DE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		49375631138B942E003F594D /* ShareKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareKit.bundle; sourceTree = "<group>"; };
 		49559CB9137CB68400BAF754 /* SHKFBLikeDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKFBLikeDialog.m; sourceTree = "<group>"; };
@@ -280,6 +294,10 @@
 		49559CD0137CB74F00BAF754 /* SocialMedia.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SocialMedia.bundle; sourceTree = "<group>"; };
 		49559D01137CD7B300BAF754 /* NSString+Base58.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base58.h"; sourceTree = "<group>"; };
 		49559D02137CD7B300BAF754 /* NSString+Base58.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base58.m"; sourceTree = "<group>"; };
+		49799D6B13961A130059F2CA /* SHKWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKWeibo.h; sourceTree = "<group>"; };
+		49799D6C13961A130059F2CA /* SHKWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKWeibo.m; sourceTree = "<group>"; };
+		49799D6D13961A130059F2CA /* SHKWeiboForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKWeiboForm.h; sourceTree = "<group>"; };
+		49799D6E13961A130059F2CA /* SHKWeiboForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKWeiboForm.m; sourceTree = "<group>"; };
 		49A92B99138EB03500C8DDAF /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		49A92B9A138EB03500C8DDAF /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		49A92B9B138EB03500C8DDAF /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -830,6 +848,39 @@
 			name = "Resources-iPad";
 			sourceTree = "<group>";
 		};
+		4923AD90139650B2003C1E3F /* Posterous */ = {
+			isa = PBXGroup;
+			children = (
+				4923AD91139650B2003C1E3F /* SHKPosterous.h */,
+				4923AD92139650B2003C1E3F /* SHKPosterous.m */,
+			);
+			path = Posterous;
+			sourceTree = "<group>";
+		};
+		4923AD93139650B2003C1E3F /* Plurk */ = {
+			isa = PBXGroup;
+			children = (
+				4923AD94139650B2003C1E3F /* JSONKit.h */,
+				4923AD95139650B2003C1E3F /* JSONKit.m */,
+				4923AD96139650B2003C1E3F /* SHKPlurk.h */,
+				4923AD97139650B2003C1E3F /* SHKPlurk.m */,
+				4923AD98139650B2003C1E3F /* SHKPlurkForm.h */,
+				4923AD99139650B2003C1E3F /* SHKPlurkForm.m */,
+			);
+			path = Plurk;
+			sourceTree = "<group>";
+		};
+		49799D6A13961A130059F2CA /* Weibo */ = {
+			isa = PBXGroup;
+			children = (
+				49799D6B13961A130059F2CA /* SHKWeibo.h */,
+				49799D6C13961A130059F2CA /* SHKWeibo.m */,
+				49799D6D13961A130059F2CA /* SHKWeiboForm.h */,
+				49799D6E13961A130059F2CA /* SHKWeiboForm.m */,
+			);
+			path = Weibo;
+			sourceTree = "<group>";
+		};
 		49A92B97138EB03500C8DDAF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -861,6 +912,9 @@
 		49A92BA6138EB03500C8DDAF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4923AD90139650B2003C1E3F /* Posterous */,
+				4923AD93139650B2003C1E3F /* Plurk */,
+				49799D6A13961A130059F2CA /* Weibo */,
 				49A92BA7138EB03500C8DDAF /* Delicious */,
 				49A92BAA138EB03500C8DDAF /* Dropbox */,
 				49A92BF6138EB03500C8DDAF /* Evernote */,
@@ -1426,6 +1480,12 @@
 				49A92CA8138EB03600C8DDAF /* SHKTumblr.m in Sources */,
 				49A92CA9138EB03600C8DDAF /* SHKTwitter.m in Sources */,
 				49A92CAA138EB03600C8DDAF /* SHKTwitterForm.m in Sources */,
+				49799D6F13961A130059F2CA /* SHKWeibo.m in Sources */,
+				49799D7013961A130059F2CA /* SHKWeiboForm.m in Sources */,
+				4923AD9A139650B2003C1E3F /* SHKPosterous.m in Sources */,
+				4923AD9B139650B2003C1E3F /* JSONKit.m in Sources */,
+				4923AD9C139650B2003C1E3F /* SHKPlurk.m in Sources */,
+				4923AD9D139650B2003C1E3F /* SHKPlurkForm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

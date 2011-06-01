@@ -23,6 +23,9 @@
 		<string>SHKTumblr</string>
 		<string>SHKFlickr</string>
 		<string>SHKDropbox</string>
+		<string>SHKWeibo</string>
+		<string>SHKPosterous</string>
+		<string>SHKPlurk</string>
 	</array>
 </dict>
 </plist>

@@ -121,6 +121,9 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)aConnection
 {
+    //NSLog(@"status code %d", [(NSHTTPURLResponse *)response statusCode]);
+    //NSLog(@"response %@", [[[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease] URLDecodedString]);
+    
 	OAServiceTicket *ticket = [[OAServiceTicket alloc] initWithRequest:request
 															  response:response
 															didSucceed:[(NSHTTPURLResponse *)response statusCode] < 400];
