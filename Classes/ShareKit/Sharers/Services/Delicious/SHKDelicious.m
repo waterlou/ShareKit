@@ -31,8 +31,8 @@
 
 // You can leave this be.  The user will actually never see this url.  ShareKit just looks for
 // when delicious redirects to this url and intercepts it.  It can be any url.
+//#define SHKDeliciousCallbackUrl		@"http://getsharekit.com/oauthcallback"
 #define SHKDeliciousCallbackUrl		@"http://getsharekit.com/oauthcallback"
-
 
 // http://github.com/jdg/oauthconsumer/blob/master/OATokenManager.m
 
@@ -138,7 +138,7 @@
 		OAMutableURLRequest *oRequest = [[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.del.icio.us/v2/posts/add"]
 																		consumer:consumer
 																		   token:accessToken
-																		   realm:nil
+																		   realm:@"yahooapis.com"
 															   signatureProvider:nil];
 		
 		[oRequest setHTTPMethod:@"GET"];
@@ -198,7 +198,7 @@
 		NSString *body = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 		
 		// Expired token
-		if ([body rangeOfString:@"token_expired"].location != NSNotFound)
+		if ([body rangeOfString:@"token_expired"].location != NSNotFound || [body rangeOfString:@"Please provide valid credentials"].location != NSNotFound)
 		{
 			[self refreshToken];				
 			return;
