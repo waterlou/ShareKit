@@ -34,6 +34,9 @@
 static NSString *kStoredAuthTokenKeyName = @"FlickrStoredAuthTokenKeyName";
 static NSString *kUploadImageStep = @"kUploadImageStep";
 
+@interface SHKFlickr(OFFlickrAPIRequestDelegate)<OFFlickrAPIRequestDelegate>
+@end
+
 @implementation SHKFlickr
 
 @synthesize flickrLink;

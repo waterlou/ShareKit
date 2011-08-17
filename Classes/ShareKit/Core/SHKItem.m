@@ -41,7 +41,8 @@
 @synthesize custom;
 
 -(id) init {
-    [super init];
+    if ((self = [super init])) {        
+    }
     return self;
 }
 - (void)dealloc
