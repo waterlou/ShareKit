@@ -68,6 +68,8 @@
 		43C91D1D11EB963600F31FAE /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C91D1C11EB963600F31FAE /* MainWindow-iPad.xib */; };
 		43D1DEF011D5CDD200550D75 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D1DEEF11D5CDD200550D75 /* SystemConfiguration.framework */; };
 		43EF406E11D3FFF800B1F700 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EF406D11D3FFF800B1F700 /* Security.framework */; };
+		4917561213B3489100297793 /* SHKInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 4917560F13B3489100297793 /* SHKInstagram.m */; };
+		4917561313B3489100297793 /* SHKInstagramForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4917561113B3489100297793 /* SHKInstagramForm.m */; };
 		4923AD9A139650B2003C1E3F /* SHKPosterous.m in Sources */ = {isa = PBXBuildFile; fileRef = 4923AD92139650B2003C1E3F /* SHKPosterous.m */; };
 		4923AD9B139650B2003C1E3F /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4923AD95139650B2003C1E3F /* JSONKit.m */; };
 		4923AD9C139650B2003C1E3F /* SHKPlurk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4923AD97139650B2003C1E3F /* SHKPlurk.m */; };
@@ -279,6 +281,10 @@
 		43C91D1C11EB963600F31FAE /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		43D1DEEF11D5CDD200550D75 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		43EF406D11D3FFF800B1F700 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		4917560E13B3489100297793 /* SHKInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKInstagram.h; sourceTree = "<group>"; };
+		4917560F13B3489100297793 /* SHKInstagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKInstagram.m; sourceTree = "<group>"; };
+		4917561013B3489100297793 /* SHKInstagramForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKInstagramForm.h; sourceTree = "<group>"; };
+		4917561113B3489100297793 /* SHKInstagramForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKInstagramForm.m; sourceTree = "<group>"; };
 		4923AD91139650B2003C1E3F /* SHKPosterous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKPosterous.h; sourceTree = "<group>"; };
 		4923AD92139650B2003C1E3F /* SHKPosterous.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKPosterous.m; sourceTree = "<group>"; };
 		4923AD94139650B2003C1E3F /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
@@ -848,6 +854,17 @@
 			name = "Resources-iPad";
 			sourceTree = "<group>";
 		};
+		4917560D13B3489100297793 /* Instagram */ = {
+			isa = PBXGroup;
+			children = (
+				4917560E13B3489100297793 /* SHKInstagram.h */,
+				4917560F13B3489100297793 /* SHKInstagram.m */,
+				4917561013B3489100297793 /* SHKInstagramForm.h */,
+				4917561113B3489100297793 /* SHKInstagramForm.m */,
+			);
+			path = Instagram;
+			sourceTree = "<group>";
+		};
 		4923AD90139650B2003C1E3F /* Posterous */ = {
 			isa = PBXGroup;
 			children = (
@@ -912,6 +929,7 @@
 		49A92BA6138EB03500C8DDAF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4917560D13B3489100297793 /* Instagram */,
 				4923AD90139650B2003C1E3F /* Posterous */,
 				4923AD93139650B2003C1E3F /* Plurk */,
 				49799D6A13961A130059F2CA /* Weibo */,
@@ -1486,6 +1504,8 @@
 				4923AD9B139650B2003C1E3F /* JSONKit.m in Sources */,
 				4923AD9C139650B2003C1E3F /* SHKPlurk.m in Sources */,
 				4923AD9D139650B2003C1E3F /* SHKPlurkForm.m in Sources */,
+				4917561213B3489100297793 /* SHKInstagram.m in Sources */,
+				4917561313B3489100297793 /* SHKInstagramForm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
