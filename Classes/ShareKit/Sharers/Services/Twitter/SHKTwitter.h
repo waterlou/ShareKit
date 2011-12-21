@@ -51,6 +51,7 @@
 - (void)sendForm:(SHKTwitterForm *)form;
 
 - (void)sendStatus;
+- (void)sendStatusWithMedia;    // new api to add photo 
 - (void)sendStatusTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data;
 - (void)sendStatusTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error;
 - (void)sendImage;

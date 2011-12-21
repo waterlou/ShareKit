@@ -47,7 +47,7 @@
 	UIViewController *currentView;
 	UIViewController *pendingView;
 	BOOL isDismissingView;
-	
+    
 	NSOperationQueue *offlineQueue;
 }
 

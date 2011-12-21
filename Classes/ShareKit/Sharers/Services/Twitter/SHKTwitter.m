@@ -304,7 +304,8 @@
 	else
 	{	
 		if (item.shareType == SHKShareTypeImage) {
-			[self sendImage];
+			//[self sendImage];
+            [self sendStatusWithMedia];
 		} else {
 			[self sendStatus];
 		}
@@ -316,6 +317,76 @@
 	}
 	
 	return NO;
+}
+
+/*
+ * Send image using new twitter status_with_media api, no need using other service like twitpic
+ */
+- (void)sendStatusWithMedia
+{
+	OAMutableURLRequest *oRequest = [[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://upload.twitter.com/1/statuses/update_with_media.json"]
+																	consumer:consumer
+																	   token:accessToken
+																	   realm:nil
+														   signatureProvider:nil];
+	
+	[oRequest setHTTPMethod:@"POST"];
+    
+    //[oRequest setValue:@"https://api.twitter.com/1/account/verify_credentials.json" forHTTPHeaderField:@"X-Auth-Service-Provider"];
+    //[oRequest setValue:oauthHeader forHTTPHeaderField:@"X-Verify-Credentials-Authorization"];
+	
+	CGFloat compression = 0.9f;
+	NSData *imageData = UIImageJPEGRepresentation([item image], compression);
+	
+	// TODO
+	// Note from Nate to creator of sendImage method - This seems like it could be a source of sluggishness.
+	// For example, if the image is large (say 3000px x 3000px for example), it would be better to resize the image
+	// to an appropriate size (max of img.ly) and then start trying to compress.
+	
+	while ([imageData length] > 700000 && compression > 0.1) {
+		// NSLog(@"Image size too big, compression more: current data size: %d bytes",[imageData length]);
+		compression -= 0.1;
+		imageData = UIImageJPEGRepresentation([item image], compression);
+		
+	}
+	
+	NSString *boundary = @"0xKhTmLbOuNdArY";
+	NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+	[oRequest setValue:contentType forHTTPHeaderField:@"Content-Type"];
+	
+	NSMutableData *body = [NSMutableData data];
+	NSString *dispKey = dispKey = @"Content-Disposition: form-data; name=\"media[]\"; filename=\"upload.jpg\"\r\n";
+	
+	
+	[body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[body appendData:[dispKey dataUsingEncoding:NSUTF8StringEncoding]];
+	[body appendData:[@"Content-Type: image/jpg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+	[body appendData:imageData];
+	[body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	if([item customValueForKey:@"profile_update"]){
+		// no ops
+	} else {
+		[body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+		[body appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"status\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+		[body appendData:[[item customValueForKey:@"status"] dataUsingEncoding:NSUTF8StringEncoding]];
+		[body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];	
+	}
+	
+	[body appendData:[[NSString stringWithFormat:@"--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];	
+	// setting the body of the post to the reqeust
+	[oRequest setHTTPBody:body];
+    //[oRequest setValue:[NSString stringWithFormat:@"%d", [body length]] forHTTPHeaderField:@"Content-Length"];    
+    //[oRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:oRequest
+																						  delegate:self
+																				 didFinishSelector:@selector(sendStatusTicket:didFinishWithData:)
+																				   didFailSelector:@selector(sendStatusTicket:didFailWithError:)];	
+	
+
+	[fetcher start];
+	[oRequest release];
 }
 
 - (void)sendStatus

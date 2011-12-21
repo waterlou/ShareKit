@@ -36,6 +36,11 @@
 #import <objc/message.h>
 #import <MessageUI/MessageUI.h>
 
+// after iOS5 modal view's parent is presentingViewController while it's parentViewController in iOS 4 or eariler
+#ifndef __presentingViewController
+#define __presentingViewController(obj) (([obj respondsToSelector:@selector(presentingViewController)]) ? [obj presentingViewController] : [obj parentViewController] )
+#endif //__presentingViewController//
+
 
 @implementation SHK
 
@@ -127,7 +132,7 @@ BOOL SHKinit;
 	if (currentView != nil)
 	{
 		self.pendingView = vc;
-		[[currentView parentViewController] dismissModalViewControllerAnimated:YES];
+		[__presentingViewController(currentView) dismissModalViewControllerAnimated:YES];
 		return;
 	}
 		
@@ -179,10 +184,10 @@ BOOL SHKinit;
 	if (currentView != nil)
 	{
 		// Dismiss the modal view
-		if ([currentView parentViewController] != nil)
+		if (__presentingViewController(currentView) != nil)
 		{
 			self.isDismissingView = YES;
-			[[currentView parentViewController] dismissModalViewControllerAnimated:animated];
+			[__presentingViewController(currentView) dismissModalViewControllerAnimated:animated];
 		}
 		
 		else
