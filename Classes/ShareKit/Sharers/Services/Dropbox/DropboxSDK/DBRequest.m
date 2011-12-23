@@ -7,11 +7,20 @@
 //
 
 #import "DBRequest.h"
+#import "DBLog.h"
 #import "DBError.h"
 #import "JSON.h"
 
 
 static id networkRequestDelegate = nil;
+
+
+@interface DBRequest ()
+
+- (void)setError:(NSError *)error;
+
+@end
+
 
 @implementation DBRequest
 
@@ -33,7 +42,7 @@ static id networkRequestDelegate = nil;
 
 - (void) dealloc {
     [urlConnection cancel];
-	
+    
     [request release];
     [urlConnection release];
     [fileHandle release];
@@ -72,6 +81,10 @@ static id networkRequestDelegate = nil;
     return [response statusCode];
 }
 
+- (long long)contentLength {
+    return [[[response allHeaderFields] objectForKey:@"Content-Length"] longLongValue];
+}
+
 - (void)cancel {
     [urlConnection cancel];
     target = nil;
@@ -80,11 +93,21 @@ static id networkRequestDelegate = nil;
         [fileHandle closeFile];
         NSError* rmError;
         if (![[NSFileManager defaultManager] removeItemAtPath:tempFilename error:&rmError]) {
-            NSLog(@"DBRequest#cancel Error removing temp file: %@", rmError);
+            DBLogError(@"DBRequest#cancel Error removing temp file: %@", rmError);
         }
     }
     
     [networkRequestDelegate networkRequestStopped];
+}
+
+- (id)parseResponseAsType:(Class)cls {
+    if (error) return nil;
+    NSObject *res = [self resultJSON];
+    if (![res isKindOfClass:cls]) {
+        [self setError:[NSError errorWithDomain:DBErrorDomain code:DBErrorInvalidResponse userInfo:userInfo]];
+        return nil;
+    }
+    return res;
 }
 
 #pragma mark NSURLConnection delegate methods
@@ -102,8 +125,8 @@ static id networkRequestDelegate = nil;
         NSFileManager* fileManager = [[NSFileManager new] autorelease];
         BOOL success = [fileManager createFileAtPath:tempFilename contents:nil attributes:nil];
         if (!success) {
-            NSLog(@"DBRequest#connection:didReceiveData: Error creating file at path: %@", 
-                    tempFilename);
+            DBLogError(@"DBRequest#connection:didReceiveData: Error creating file at path: %@", 
+                       tempFilename);
         }
 
         fileHandle = [[NSFileHandle fileHandleForWritingAtPath:tempFilename] retain];
@@ -119,8 +142,7 @@ static id networkRequestDelegate = nil;
             [urlConnection cancel];
             [fileHandle closeFile];
             [[NSFileManager defaultManager] removeItemAtPath:tempFilename error:nil];
-            error = [[NSError alloc] initWithDomain:DBErrorDomain
-                                        code:DBErrorInsufficientDiskSpace userInfo:userInfo];
+            [self setError:[NSError errorWithDomain:DBErrorDomain code:DBErrorInsufficientDiskSpace userInfo:userInfo]];
             
             SEL sel = failureSelector ? failureSelector : selector;
             [target performSelector:sel withObject:self];
@@ -137,10 +159,13 @@ static id networkRequestDelegate = nil;
     }
     
     bytesDownloaded += [data length];
-    NSInteger contentLength = [[[response allHeaderFields] objectForKey:@"Content-Length"] intValue];
-    downloadProgress = (CGFloat)bytesDownloaded / (CGFloat)contentLength;
-    if (downloadProgressSelector) {
-        [target performSelector:downloadProgressSelector withObject:self];
+    
+    long long contentLength = [self contentLength];
+    if (contentLength > 0) {
+        downloadProgress = (CGFloat)bytesDownloaded / (CGFloat)contentLength;
+        if (downloadProgressSelector) {
+            [target performSelector:downloadProgressSelector withObject:self];
+        }
     }
 }
 
@@ -167,17 +192,32 @@ static id networkRequestDelegate = nil;
                 [errorUserInfo setObject:resultString forKey:@"errorMessage"];
             }
         }
-        error = [[NSError alloc] initWithDomain:@"dropbox.com" code:self.statusCode userInfo:errorUserInfo];
+        [self setError:[NSError errorWithDomain:DBErrorDomain code:self.statusCode userInfo:errorUserInfo]];
     } else if (tempFilename) {
-        // Move temp file over to desired file
         NSFileManager* fileManager = [[NSFileManager new] autorelease];
-        [fileManager removeItemAtPath:resultFilename error:nil];
         NSError* moveError;
-        BOOL success = [fileManager moveItemAtPath:tempFilename toPath:resultFilename error:&moveError];
-        if (!success) {
-            NSLog(@"DBRequest#connectionDidFinishLoading: error moving temp file to desired location: %@",
-                [moveError localizedDescription]);
-            error = [[NSError alloc] initWithDomain:moveError.domain code:moveError.code userInfo:self.userInfo];
+        
+        // Check that the file size is the same as the Content-Length
+        NSDictionary* fileAttrs = [fileManager attributesOfItemAtPath:tempFilename error:&moveError];
+        
+        if (!fileAttrs) {
+            DBLogError(@"DBRequest#connectionDidFinishLoading: error getting file attrs: %@", moveError);
+            [fileManager removeItemAtPath:tempFilename error:nil];
+            [self setError:[NSError errorWithDomain:moveError.domain code:moveError.code userInfo:self.userInfo]];
+        } else if ([self contentLength] != 0 && [self contentLength] != [fileAttrs fileSize]) {
+            // This happens in iOS 4.0 when the network connection changes while loading
+            [fileManager removeItemAtPath:tempFilename error:nil];
+            [self setError:[NSError errorWithDomain:DBErrorDomain code:DBErrorGenericError userInfo:self.userInfo]];
+        } else {        
+            // Everything's OK, move temp file over to desired file
+            [fileManager removeItemAtPath:resultFilename error:nil];
+            
+            BOOL success = [fileManager moveItemAtPath:tempFilename toPath:resultFilename error:&moveError];
+            if (!success) {
+                DBLogError(@"DBRequest#connectionDidFinishLoading: error moving temp file to desired location: %@",
+                    [moveError localizedDescription]);
+                [self setError:[NSError errorWithDomain:moveError.domain code:moveError.code userInfo:self.userInfo]];
+            }
         }
         
         [tempFilename release];
@@ -192,7 +232,7 @@ static id networkRequestDelegate = nil;
 
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)anError {
     [fileHandle closeFile];
-    error = [[NSError alloc] initWithDomain:anError.domain code:anError.code userInfo:self.userInfo];
+    [self setError:[NSError errorWithDomain:anError.domain code:anError.code userInfo:self.userInfo]];
     bytesDownloaded = 0;
     downloadProgress = 0;
     uploadProgress = 0;
@@ -202,7 +242,7 @@ static id networkRequestDelegate = nil;
         NSError* removeError;
         BOOL success = [fileManager removeItemAtPath:tempFilename error:&removeError];
         if (!success) {
-            NSLog(@"DBRequest#connection:didFailWithError: error removing temporary file: %@", 
+            DBLogError(@"DBRequest#connection:didFailWithError: error removing temporary file: %@", 
                     [removeError localizedDescription]);
         }
         [tempFilename release];
@@ -223,6 +263,25 @@ static id networkRequestDelegate = nil;
     if (uploadProgressSelector) {
         [target performSelector:uploadProgressSelector withObject:self];
     }
+}
+
+
+#pragma mark private methods
+
+- (void)setError:(NSError *)theError {
+    if (theError == error) return;
+    [error release];
+    error = [theError retain];
+
+	NSString *errorStr = [error.userInfo objectForKey:@"error"];
+	if (!errorStr) {
+		errorStr = [error description];
+	}
+
+	if (!([error.domain isEqual:DBErrorDomain] && error.code == 304)) {
+		// Log errors unless they're 304's
+		DBLogWarning(@"DropboxSDK: error making request to %@ - %@", [[request URL] path], errorStr);
+	}
 }
 
 @end

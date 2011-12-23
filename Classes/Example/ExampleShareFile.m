@@ -56,7 +56,7 @@
 
 - (void)loadView 
 { 
-	self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+	self.webView = [[[UIWebView alloc] initWithFrame:CGRectZero] autorelease];
 	webView.delegate = self;
 	webView.scalesPageToFit = YES;
 	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"example.pdf"]]]];

@@ -8,6 +8,8 @@
 
 #import "NSString+Dropbox.h"
 
+#import "DBDefines.h"
+
 
 @implementation NSString (Dropbox)
 
@@ -21,3 +23,5 @@
 }
 
 @end
+
+DB_FIX_CATEGORY_BUG(NSString_Dropbox)

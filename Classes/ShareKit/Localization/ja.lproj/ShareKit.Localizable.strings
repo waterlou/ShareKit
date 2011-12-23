@@ -1,99 +1,79 @@
-"Email" = "メール";
-"Username" = "ユーザー名";
-"Password" = "パスワード";
-"Follow %@" = "@%@をフォローする";
-"Continue" = "続ける";
-"Share" = "共有";
-"More..." = "その他";
-"Cancel" = "キャンセル";
-"Slug" = "Slug";
-"Private" = "プライベート";
-"Public" = "パブリック";
-"Caption" = "キャプション";
-"Title" = "タイトル";
-"Tags" = "タグ";
-"Close" = "閉じる";
-"Notes" = "ノート";
-"Note" = "ノート";
-"Share" = "共有";
-"Shared" = "共有";
-"Edit" = "編集";
-"Actions" = "アクション";
-"Services" = "サービス";
-"Send to %@" = "%@に送る";
-"Copy" = "コピー";
-"Copied!" = "コピーしました！";
-"Saving to %@" = "%@に保存中";
-"Saved!" = "保存しました！";
-"Offline" = "オフライン";
-"Error" = "エラー";
-"Login" = "ログイン";
-"Logging In..." = "ログイン中";
-"Login Error" = "ログイン失敗";
-"Connecting..." = "接続中";
-
-"Shortening URL..." = "URLを短縮中";
-"Shorten URL Error" = "URLの短縮に失敗しました";
-"We could not shorten the URL." = "URLを短縮できませんでした";
-
-"Create a free account at %@" = "%@で無料の新規アカウントを作成";
-"Create an account at %@" = "%@で新規アカウントを作成";
-
-"Send to Twitter" = "ツイッターでつぶやく";
-
-"Message is too long" = "メッセージが長すぎます";
-"Twitter posts can only be 140 characters in length." = "ツイッターは140文字までしか送れません";
-"Message is empty" = "メッセージが入力されていません";
-"You must enter a message in order to post." = "投稿するためにはメッセージを入力する必要があります";
-
-"Enter your message:" = "メッセージを入力:";
-
-"Invalid email or password." = "メールアドレスかパスワードが間違えています";
-"The service encountered an error. Please try again later." = "只今サービスが利用できません。しばらくして再試行してください";
-"There was a sending your post to Tumblr." = "Tumblrに未送信の投稿があります";
-
-"There was an error saving to Pinboard" = "Pinboardの保存にエラーが起きました";
-
-"Sorry, Instapaper did not accept your credentials. Please try again." = "Instapaperが認証情報を受理できませんでした。再試行してください";
-"Sorry, Instapaper encountered an error. Please try again." = "Instapaperエラーが発生しました。再試行してください";
-"There was a problem saving to Instapaper." = "Instapaperに保存中にエラーが発生しました。";
-
-"Incorrect username and password" = "ユーザー名かパスワードが間違えています";
-"There was an error logging into Google Reader" = "Googleリーダーにログイン失敗しました";
-"There was a problem authenticating your account." = "ユーザー認証に問題が発生しました";
-"There was a problem saving your note." = "ノートを保存中に問題が発生しました";
-
-"There was a problem saving to Delicious." = "TDeliciousに保存中に問題が発生しました";
-
-"Open in Safari" = "Safariで開く";
-"Attached: %@" = "添付済: %@";
-
-"You must be online to login to %@" = "%@にログインするにはオンラインである必要があります";
-
-"Auto Share" = "自動共有";
-"Enable auto share to skip this step in the future." = "今後、この手順をスキップして、自動的に共有する";
-
-"You must be online in order to share with %@" = "%@に共有するためにはオンラインである必要があります";
-"There was an error while sharing" = "共有にエラーが発生しました";
-
-"Could not authenticate you. Please relogin." = "認証できませんでした。再度ログインしてください。";
-"There was a problem requesting authorization from %@" = "%@への認証要求に問題が発生しました";
-"Request Error" = "通信エラー";
-"There was an error while sharing" = "共有にエラーが発生しました";
-
-"Authorize Error" = "認証エラー";
-"There was an error while authorizing" = "認証にエラーが発生しました";
-
-"Authenticating..." = "認証中...";
-"There was a problem requesting access from %@" = "%@へのアクセスに問題が発生しました";
-
-"Access Error" = "アクセスエラー";
-"There was an error while sharing" = "共有にエラーが発生しました";
-
-"Sharing a Link" = "リンクを共有する";
-"Sharing an Image" = "イメージを共有する";
-"Sharing Text" = "テキストを共有する";
-"Sharing a File" = "ファイルを共有する";
-"Logout of All Services" = "すべてのサービスからログアウト";
-"Save to Photo Album" = "フォトアルバムに保存";
-"Image + " = "画像 + ";
+{
+	Email = "\U30e1\U30fc\U30eb";
+	Username = "\U30e6\U30fc\U30b6\U30fc\U540d";
+	Password = "\U30d1\U30b9\U30ef\U30fc\U30c9";
+	"Follow %@" = "@%@\U3092\U30d5\U30a9\U30ed\U30fc\U3059\U308b";
+	Continue = "\U7d9a\U3051\U308b";
+	Share = "\U5171\U6709";
+	"More..." = "\U305d\U306e\U4ed6";
+	Cancel = "\U30ad\U30e3\U30f3\U30bb\U30eb";
+	Slug = Slug;
+	Private = "\U30d7\U30e9\U30a4\U30d9\U30fc\U30c8";
+	Public = "\U30d1\U30d6\U30ea\U30c3\U30af";
+	Caption = "\U30ad\U30e3\U30d7\U30b7\U30e7\U30f3";
+	Title = "\U30bf\U30a4\U30c8\U30eb";
+	Tags = "\U30bf\U30b0";
+	Close = "\U9589\U3058\U308b";
+	Notes = "\U30ce\U30fc\U30c8";
+	Note = "\U30ce\U30fc\U30c8";
+	Shared = "\U5171\U6709";
+	Edit = "\U7de8\U96c6";
+	Actions = "\U30a2\U30af\U30b7\U30e7\U30f3";
+	Services = "\U30b5\U30fc\U30d3\U30b9";
+	"Send to %@" = "%@\U306b\U9001\U308b";
+	Copy = "\U30b3\U30d4\U30fc";
+	"Copied!" = "\U30b3\U30d4\U30fc\U3057\U307e\U3057\U305f\Uff01";
+	"Saving to %@" = "%@\U306b\U4fdd\U5b58\U4e2d";
+	"Saved!" = "\U4fdd\U5b58\U3057\U307e\U3057\U305f\Uff01";
+	Offline = "\U30aa\U30d5\U30e9\U30a4\U30f3";
+	Error = "\U30a8\U30e9\U30fc";
+	Login = "\U30ed\U30b0\U30a4\U30f3";
+	"Logging In..." = "\U30ed\U30b0\U30a4\U30f3\U4e2d";
+	"Login Error" = "\U30ed\U30b0\U30a4\U30f3\U5931\U6557";
+	"Connecting..." = "\U63a5\U7d9a\U4e2d";
+	"Shortening URL..." = "URL\U3092\U77ed\U7e2e\U4e2d";
+	"Shorten URL Error" = "URL\U306e\U77ed\U7e2e\U306b\U5931\U6557\U3057\U307e\U3057\U305f";
+	"We could not shorten the URL." = "URL\U3092\U77ed\U7e2e\U3067\U304d\U307e\U305b\U3093\U3067\U3057\U305f";
+	"Create a free account at %@" = "%@\U3067\U7121\U6599\U306e\U65b0\U898f\U30a2\U30ab\U30a6\U30f3\U30c8\U3092\U4f5c\U6210";
+	"Create an account at %@" = "%@\U3067\U65b0\U898f\U30a2\U30ab\U30a6\U30f3\U30c8\U3092\U4f5c\U6210";
+	"Send to Twitter" = "\U30c4\U30a4\U30c3\U30bf\U30fc\U3067\U3064\U3076\U3084\U304f";
+	"Message is too long" = "\U30e1\U30c3\U30bb\U30fc\U30b8\U304c\U9577\U3059\U304e\U307e\U3059";
+	"Twitter posts can only be 140 characters in length." = "\U30c4\U30a4\U30c3\U30bf\U30fc\U306f140\U6587\U5b57\U307e\U3067\U3057\U304b\U9001\U308c\U307e\U305b\U3093";
+	"Message is empty" = "\U30e1\U30c3\U30bb\U30fc\U30b8\U304c\U5165\U529b\U3055\U308c\U3066\U3044\U307e\U305b\U3093";
+	"You must enter a message in order to post." = "\U6295\U7a3f\U3059\U308b\U305f\U3081\U306b\U306f\U30e1\U30c3\U30bb\U30fc\U30b8\U3092\U5165\U529b\U3059\U308b\U5fc5\U8981\U304c\U3042\U308a\U307e\U3059";
+	"Enter your message:" = "\U30e1\U30c3\U30bb\U30fc\U30b8\U3092\U5165\U529b:";
+	"Invalid email or password." = "\U30e1\U30fc\U30eb\U30a2\U30c9\U30ec\U30b9\U304b\U30d1\U30b9\U30ef\U30fc\U30c9\U304c\U9593\U9055\U3048\U3066\U3044\U307e\U3059";
+	"The service encountered an error. Please try again later." = "\U53ea\U4eca\U30b5\U30fc\U30d3\U30b9\U304c\U5229\U7528\U3067\U304d\U307e\U305b\U3093\U3002\U3057\U3070\U3089\U304f\U3057\U3066\U518d\U8a66\U884c\U3057\U3066\U304f\U3060\U3055\U3044";
+	"There was a sending your post to Tumblr." = "Tumblr\U306b\U672a\U9001\U4fe1\U306e\U6295\U7a3f\U304c\U3042\U308a\U307e\U3059";
+	"There was an error saving to Pinboard" = "Pinboard\U306e\U4fdd\U5b58\U306b\U30a8\U30e9\U30fc\U304c\U8d77\U304d\U307e\U3057\U305f";
+	"Sorry, Instapaper did not accept your credentials. Please try again." = "Instapaper\U304c\U8a8d\U8a3c\U60c5\U5831\U3092\U53d7\U7406\U3067\U304d\U307e\U305b\U3093\U3067\U3057\U305f\U3002\U518d\U8a66\U884c\U3057\U3066\U304f\U3060\U3055\U3044";
+	"Sorry, Instapaper encountered an error. Please try again." = "Instapaper\U30a8\U30e9\U30fc\U304c\U767a\U751f\U3057\U307e\U3057\U305f\U3002\U518d\U8a66\U884c\U3057\U3066\U304f\U3060\U3055\U3044";
+	"There was a problem saving to Instapaper." = "Instapaper\U306b\U4fdd\U5b58\U4e2d\U306b\U30a8\U30e9\U30fc\U304c\U767a\U751f\U3057\U307e\U3057\U305f\U3002";
+	"Incorrect username and password" = "\U30e6\U30fc\U30b6\U30fc\U540d\U304b\U30d1\U30b9\U30ef\U30fc\U30c9\U304c\U9593\U9055\U3048\U3066\U3044\U307e\U3059";
+	"There was an error logging into Google Reader" = "Google\U30ea\U30fc\U30c0\U30fc\U306b\U30ed\U30b0\U30a4\U30f3\U5931\U6557\U3057\U307e\U3057\U305f";
+	"There was a problem authenticating your account." = "\U30e6\U30fc\U30b6\U30fc\U8a8d\U8a3c\U306b\U554f\U984c\U304c\U767a\U751f\U3057\U307e\U3057\U305f";
+	"There was a problem saving your note." = "\U30ce\U30fc\U30c8\U3092\U4fdd\U5b58\U4e2d\U306b\U554f\U984c\U304c\U767a\U751f\U3057\U307e\U3057\U305f";
+	"There was a problem saving to Delicious." = "Delicious\U306b\U4fdd\U5b58\U4e2d\U306b\U554f\U984c\U304c\U767a\U751f\U3057\U307e\U3057\U305f";
+	"Open in Safari" = "Safari\U3067\U958b\U304f";
+	"Attached: %@" = "\U6dfb\U4ed8\U6e08: %@";
+	"You must be online to login to %@" = "%@\U306b\U30ed\U30b0\U30a4\U30f3\U3059\U308b\U306b\U306f\U30aa\U30f3\U30e9\U30a4\U30f3\U3067\U3042\U308b\U5fc5\U8981\U304c\U3042\U308a\U307e\U3059";
+	"Auto Share" = "\U81ea\U52d5\U5171\U6709";
+	"Enable auto share to skip this step in the future." = "\U4eca\U5f8c\U3001\U3053\U306e\U624b\U9806\U3092\U30b9\U30ad\U30c3\U30d7\U3057\U3066\U3001\U81ea\U52d5\U7684\U306b\U5171\U6709\U3059\U308b";
+	"You must be online in order to share with %@" = "%@\U306b\U5171\U6709\U3059\U308b\U305f\U3081\U306b\U306f\U30aa\U30f3\U30e9\U30a4\U30f3\U3067\U3042\U308b\U5fc5\U8981\U304c\U3042\U308a\U307e\U3059";
+	"There was an error while sharing" = "\U5171\U6709\U306b\U30a8\U30e9\U30fc\U304c\U767a\U751f\U3057\U307e\U3057\U305f";
+	"Could not authenticate you. Please relogin." = "\U8a8d\U8a3c\U3067\U304d\U307e\U305b\U3093\U3067\U3057\U305f\U3002\U518d\U5ea6\U30ed\U30b0\U30a4\U30f3\U3057\U3066\U304f\U3060\U3055\U3044\U3002";
+	"There was a problem requesting authorization from %@" = "%@\U3078\U306e\U8a8d\U8a3c\U8981\U6c42\U306b\U554f\U984c\U304c\U767a\U751f\U3057\U307e\U3057\U305f";
+	"Request Error" = "\U901a\U4fe1\U30a8\U30e9\U30fc";
+	"Authorize Error" = "\U8a8d\U8a3c\U30a8\U30e9\U30fc";
+	"There was an error while authorizing" = "\U8a8d\U8a3c\U306b\U30a8\U30e9\U30fc\U304c\U767a\U751f\U3057\U307e\U3057\U305f";
+	"Authenticating..." = "\U8a8d\U8a3c\U4e2d...";
+	"There was a problem requesting access from %@" = "%@\U3078\U306e\U30a2\U30af\U30bb\U30b9\U306b\U554f\U984c\U304c\U767a\U751f\U3057\U307e\U3057\U305f";
+	"Access Error" = "\U30a2\U30af\U30bb\U30b9\U30a8\U30e9\U30fc";
+	"Sharing a Link" = "\U30ea\U30f3\U30af\U3092\U5171\U6709\U3059\U308b";
+	"Sharing an Image" = "\U30a4\U30e1\U30fc\U30b8\U3092\U5171\U6709\U3059\U308b";
+	"Sharing Text" = "\U30c6\U30ad\U30b9\U30c8\U3092\U5171\U6709\U3059\U308b";
+	"Sharing a File" = "\U30d5\U30a1\U30a4\U30eb\U3092\U5171\U6709\U3059\U308b";
+	"Logout of All Services" = "\U3059\U3079\U3066\U306e\U30b5\U30fc\U30d3\U30b9\U304b\U3089\U30ed\U30b0\U30a2\U30a6\U30c8";
+	"Save to Photo Album" = "\U30d5\U30a9\U30c8\U30a2\U30eb\U30d0\U30e0\U306b\U4fdd\U5b58";
+	"Image + " = "\U753b\U50cf + ";
+}

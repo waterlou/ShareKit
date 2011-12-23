@@ -58,7 +58,7 @@
 {
 	[super loadView];
 	
-	self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sanFran.jpg"]];
+	self.imageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sanFran.jpg"]] autorelease];
 	
 	imageView.frame = CGRectMake(0,0,self.view.bounds.size.width,self.view.bounds.size.height);
 	
