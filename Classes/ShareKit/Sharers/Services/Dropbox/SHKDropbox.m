@@ -25,8 +25,6 @@
 //
 //
 
-// TODO - SHKTwitter supports offline sharing, however the url cannot be shortened without an internet connection.  Need a graceful workaround for this.
-
 
 #import "SHKDropbox.h"
 

@@ -81,6 +81,7 @@
 		49559D03137CD7B300BAF754 /* NSString+Base58.m in Sources */ = {isa = PBXBuildFile; fileRef = 49559D02137CD7B300BAF754 /* NSString+Base58.m */; };
 		49799D6F13961A130059F2CA /* SHKWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 49799D6C13961A130059F2CA /* SHKWeibo.m */; };
 		49799D7013961A130059F2CA /* SHKWeiboForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 49799D6E13961A130059F2CA /* SHKWeiboForm.m */; };
+		4987814D14B342B60058F230 /* SHKFacebookForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4987814C14B342B60058F230 /* SHKFacebookForm.m */; };
 		49A92C58138EB03600C8DDAF /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A92B9B138EB03500C8DDAF /* NSObject+SBJSON.m */; };
 		49A92C59138EB03600C8DDAF /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A92B9D138EB03500C8DDAF /* NSString+SBJSON.m */; };
 		49A92C5A138EB03600C8DDAF /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A92B9F138EB03500C8DDAF /* SBJSON.m */; };
@@ -164,6 +165,7 @@
 		49A92CA9138EB03600C8DDAF /* SHKTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A92C55138EB03600C8DDAF /* SHKTwitter.m */; };
 		49A92CAA138EB03600C8DDAF /* SHKTwitterForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A92C57138EB03600C8DDAF /* SHKTwitterForm.m */; };
 		49C40964137A5E0000DAE4DA /* ShareKit.Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49C40959137A5E0000DAE4DA /* ShareKit.Localizable.strings */; };
+		49E2682C14B3E99200EF1C1C /* SHKGooglePlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2682B14B3E99200EF1C1C /* SHKGooglePlus.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -304,6 +306,8 @@
 		49799D6C13961A130059F2CA /* SHKWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKWeibo.m; sourceTree = "<group>"; };
 		49799D6D13961A130059F2CA /* SHKWeiboForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKWeiboForm.h; sourceTree = "<group>"; };
 		49799D6E13961A130059F2CA /* SHKWeiboForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKWeiboForm.m; sourceTree = "<group>"; };
+		4987814B14B342B50058F230 /* SHKFacebookForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKFacebookForm.h; sourceTree = "<group>"; };
+		4987814C14B342B60058F230 /* SHKFacebookForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKFacebookForm.m; sourceTree = "<group>"; };
 		49A92B99138EB03500C8DDAF /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		49A92B9A138EB03500C8DDAF /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		49A92B9B138EB03500C8DDAF /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -477,6 +481,8 @@
 		49C40961137A5E0000DAE4DA /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/ShareKit.Localizable.strings; sourceTree = "<group>"; };
 		49C40962137A5E0000DAE4DA /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = zh_CN.lproj/ShareKit.Localizable.strings; sourceTree = "<group>"; };
 		49C40963137A5E0000DAE4DA /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = zh_TW.lproj/ShareKit.Localizable.strings; sourceTree = "<group>"; };
+		49E2682A14B3E99200EF1C1C /* SHKGooglePlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKGooglePlus.h; sourceTree = "<group>"; };
+		49E2682B14B3E99200EF1C1C /* SHKGooglePlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKGooglePlus.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ShareKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ShareKit-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -929,6 +935,7 @@
 		49A92BA6138EB03500C8DDAF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				49E2682914B3E98D00EF1C1C /* GooglePlus */,
 				4917560D13B3489100297793 /* Instagram */,
 				4923AD90139650B2003C1E3F /* Posterous */,
 				4923AD93139650B2003C1E3F /* Plurk */,
@@ -1146,6 +1153,8 @@
 				49A92C21138EB03600C8DDAF /* facebook-ios-sdk */,
 				49A92C2C138EB03600C8DDAF /* SHKFacebook.h */,
 				49A92C2D138EB03600C8DDAF /* SHKFacebook.m */,
+				4987814B14B342B50058F230 /* SHKFacebookForm.h */,
+				4987814C14B342B60058F230 /* SHKFacebookForm.m */,
 			);
 			path = Facebook;
 			sourceTree = "<group>";
@@ -1285,6 +1294,15 @@
 				49C40959137A5E0000DAE4DA /* ShareKit.Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		49E2682914B3E98D00EF1C1C /* GooglePlus */ = {
+			isa = PBXGroup;
+			children = (
+				49E2682A14B3E99200EF1C1C /* SHKGooglePlus.h */,
+				49E2682B14B3E99200EF1C1C /* SHKGooglePlus.m */,
+			);
+			path = GooglePlus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1506,6 +1524,8 @@
 				4923AD9D139650B2003C1E3F /* SHKPlurkForm.m in Sources */,
 				4917561213B3489100297793 /* SHKInstagram.m in Sources */,
 				4917561313B3489100297793 /* SHKInstagramForm.m in Sources */,
+				4987814D14B342B60058F230 /* SHKFacebookForm.m in Sources */,
+				49E2682C14B3E99200EF1C1C /* SHKGooglePlus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

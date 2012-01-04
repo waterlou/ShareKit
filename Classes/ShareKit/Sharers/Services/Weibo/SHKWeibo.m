@@ -192,7 +192,14 @@
 {
 	if (item.shareType == SHKShareTypeURL)
 	{
-		[self shortenURL];
+        if (SHKBitLyKey.length == 0) {      // if not provide shorten key
+            // no need to shorten URL, directly show form
+            [item setCustomValue:[NSString stringWithFormat:@"%@ %@", item.text ? item.text : item.title, item.URL.absoluteString] forKey:@"status"];
+            [self showWeiboForm];            
+        }
+        else {
+            [self shortenURL];
+        }
 	}
 	
 	else if (item.shareType == SHKShareTypeImage)

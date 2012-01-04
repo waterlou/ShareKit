@@ -26,6 +26,7 @@
 //
 
 #import "SHKFacebook.h"
+#import "SHKFacebookForm.h"
 
 @implementation SHKFacebook
 
@@ -86,6 +87,7 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 #pragma mark Configuration : Dynamic Enable
 
 - (BOOL)shouldAutoShare {
+    if (SHKFacebookShowDialog) return NO;   // disable autoShare    
 	return YES; // FBConnect presents its own dialog
 }
 
@@ -97,11 +99,11 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 }
 
 - (void)promptAuthorization {
-
+    
     // We mod the facebook API so that won't kick out of our app, because we can't store image in UserDefaults
     /*
-	// store the pending item in NSUserDefaults as the authorize could kick the user out to the Facebook app or Safari
-	[[NSUserDefaults standardUserDefaults] setObject:[self.item dictionaryRepresentation] forKey:SHKFacebookPendingItem];
+     // store the pending item in NSUserDefaults as the authorize could kick the user out to the Facebook app or Safari
+     [[NSUserDefaults standardUserDefaults] setObject:[self.item dictionaryRepresentation] forKey:SHKFacebookPendingItem];
      */
 	[self.facebook authorize:permissions delegate:self];
 }
@@ -122,6 +124,14 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 #pragma mark -
 #pragma mark Share API Methods
 
+- (void)show {
+#if SHKFacebookShowDialog    
+    [self showFacebookForm];
+#else 
+    [super show];   // default action
+#endif
+}
+
 - (BOOL)send {
 	if (item.shareType == SHKShareTypeURL) {
 		NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -133,6 +143,11 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 		if ([item customValueForKey:@"image"]) {
 			[params setObject:[item customValueForKey:@"image"] forKey:@"picture"];
 		}
+        NSString *message = [item customValueForKey:@"message"];
+        if (message==nil || message.length==0) {
+            message = item.title;
+        }
+        [params setObject:message forKey:@"message"];
         
 		[self.facebook requestWithGraphPath:@"me/feed" 
 								  andParams:params 
@@ -144,10 +159,16 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 								 SHKEncode(SHKMyAppName),   // bug here, space will become %20 should fix it
 								 SHKEncode(SHKMyAppURL)];
         
+        NSString *message = [item customValueForKey:@"message"];
+        if (message==nil || message.length==0) {
+            message = item.text;
+        }
+        
 		NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-									   item.text, @"message",
+									   message, @"message",
 									   actionLinks, @"actions",
 									   nil];
+        
         
 		[self.facebook requestWithGraphPath:@"me/feed" 
 								  andParams:params 
@@ -155,26 +176,31 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 								andDelegate:self];
 	}
 	else if (item.shareType == SHKShareTypeImage) {
+        NSString *caption = [item customValueForKey:@"message"];
+        if (caption==nil || caption.length==0) {
+            caption = item.title;
+        }
+        
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        item.image, @"picture",
-                                       item.title, @"caption",
+                                       caption, @"caption",
                                        nil];
         [_facebook requestWithMethodName:@"photos.upload"
                                andParams:params
                            andHttpMethod:@"POST"
                              andDelegate:self];
-
-/*        
-		NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-									   item.image, @"source",
-									   item.title, @"message",
-									   nil];
         
-		[self.facebook requestWithGraphPath:@"me/photos" 
-								  andParams:params 
-							  andHttpMethod:@"POST" 
-								andDelegate:self];
- */
+        /*        
+         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+         item.image, @"source",
+         item.title, @"message",
+         nil];
+         
+         [self.facebook requestWithGraphPath:@"me/photos" 
+         andParams:params 
+         andHttpMethod:@"POST" 
+         andDelegate:self];
+         */
 	}
     
 	[self sendDidStart];
@@ -204,7 +230,7 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 	// store the Facebook credentials for use in future requests
 	[SHK setAuthValue:self.facebook.accessToken forKey:SHKFacebookAccessToken forSharer:[self sharerId]];
 	[[NSUserDefaults standardUserDefaults] setObject:self.facebook.expirationDate forKey:SHKFacebookExpirationDate];
-
+    
 	// if the current device does not support multitasking, the shared item will still be set and we can skip restoring the item
 	// if the current device does support multitasking, this instance of SHKFacebook will be different that the original one and we need to restore the shared item
 	UIDevice *device = [UIDevice currentDevice];
@@ -236,6 +262,39 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
 	[self sendDidFailWithError:error];
+}
+
+#pragma mark -
+
+- (void)showFacebookForm
+{
+	SHKFacebookForm *rootView = [[SHKFacebookForm alloc] initWithNibName:nil bundle:nil];	
+	rootView.delegate = self;
+	
+	// force view to load so we can set textView text
+	[rootView view];
+	
+    if (item.shareType == SHKShareTypeText) {
+        rootView.textView.text = item.text;
+    }
+    else {
+#if SHKFacebookTitleAsDefaultMessage
+        rootView.textView.text = item.title;
+#else
+        rootView.textView.text = nil;
+#endif
+    }
+	rootView.hasAttachment = item.image != nil;
+	
+	[self pushViewController:rootView animated:NO];
+	
+	[[SHK currentHelper] showViewController:self];	
+}
+
+- (void)sendForm:(SHKFacebookForm *)form
+{	
+	[item setCustomValue:form.textView.text forKey:@"message"];
+	[self tryToSend];
 }
 
 @end

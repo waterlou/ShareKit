@@ -1,8 +1,8 @@
 //
-//  SHKDropbox.h
+//  SHKFacebook.h
 //  ShareKit
 //
-//  Created by Water Lou on 05/26/2011.
+//  Created by Nathan Weiner on 6/18/10.
 
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,21 +26,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DropboxSDK.h"
-#import "DBLoginController.h"
 #import "SHKSharer.h"
 
-@protocol DBRestClientDelegate;
-@protocol DBLoginControllerDelegate;
-
-@interface SHKDropbox : SHKSharer 
-<DBLoginControllerDelegate, DBSessionDelegate, DBRestClientDelegate>
-{	
-	DBRestClient* restClient;
-}
-
-
-#pragma mark -
-#pragma mark Share API Methods
+@interface SHKGooglePlus : SHKSharer
 
 @end
