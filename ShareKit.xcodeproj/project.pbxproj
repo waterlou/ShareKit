@@ -166,6 +166,7 @@
 		49A92CAA138EB03600C8DDAF /* SHKTwitterForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A92C57138EB03600C8DDAF /* SHKTwitterForm.m */; };
 		49C40964137A5E0000DAE4DA /* ShareKit.Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49C40959137A5E0000DAE4DA /* ShareKit.Localizable.strings */; };
 		49E2682C14B3E99200EF1C1C /* SHKGooglePlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2682B14B3E99200EF1C1C /* SHKGooglePlus.m */; };
+		49E2689F14B63AE800EF1C1C /* SHKSSOFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2689E14B63AE700EF1C1C /* SHKSSOFacebook.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -483,6 +484,8 @@
 		49C40963137A5E0000DAE4DA /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = zh_TW.lproj/ShareKit.Localizable.strings; sourceTree = "<group>"; };
 		49E2682A14B3E99200EF1C1C /* SHKGooglePlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKGooglePlus.h; sourceTree = "<group>"; };
 		49E2682B14B3E99200EF1C1C /* SHKGooglePlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKGooglePlus.m; sourceTree = "<group>"; };
+		49E2689D14B63AE600EF1C1C /* SHKSSOFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKSSOFacebook.h; sourceTree = "<group>"; };
+		49E2689E14B63AE700EF1C1C /* SHKSSOFacebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKSSOFacebook.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ShareKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ShareKit-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1150,6 +1153,8 @@
 		49A92C20138EB03600C8DDAF /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
+				49E2689D14B63AE600EF1C1C /* SHKSSOFacebook.h */,
+				49E2689E14B63AE700EF1C1C /* SHKSSOFacebook.m */,
 				49A92C21138EB03600C8DDAF /* facebook-ios-sdk */,
 				49A92C2C138EB03600C8DDAF /* SHKFacebook.h */,
 				49A92C2D138EB03600C8DDAF /* SHKFacebook.m */,
@@ -1526,6 +1531,7 @@
 				4917561313B3489100297793 /* SHKInstagramForm.m in Sources */,
 				4987814D14B342B60058F230 /* SHKFacebookForm.m in Sources */,
 				49E2682C14B3E99200EF1C1C /* SHKGooglePlus.m in Sources */,
+				49E2689F14B63AE800EF1C1C /* SHKSSOFacebook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

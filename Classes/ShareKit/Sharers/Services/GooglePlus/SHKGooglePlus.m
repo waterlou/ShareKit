@@ -69,7 +69,7 @@
 	if (item.shareType == SHKShareTypeURL) {
         NSString *text = [NSString stringWithFormat: @"%@ %@", item.title, item.URL.absoluteString];
         NSURL *launchUrl = [NSURL URLWithString: [NSString stringWithFormat: @"https://m.google.com/app/plus/x/?v=compose&content=%@",
-                            [text stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding] ] ];
+                                                  [text stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding] ] ];
         [ [UIApplication sharedApplication] openURL: launchUrl ];
 	}
 	else if (item.shareType == SHKShareTypeText) {

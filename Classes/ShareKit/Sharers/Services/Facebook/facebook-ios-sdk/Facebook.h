@@ -47,6 +47,10 @@
 - (void)authorize:(NSArray *)permissions
          delegate:(id<FBSessionDelegate>)delegate;
 
+// can force not to use single sign on 
+- (void)authorize:(NSArray *)permissions
+         delegate:(id<FBSessionDelegate>)delegate singleSignOn : (BOOL) singleSignOn;
+
 - (BOOL)handleOpenURL:(NSURL *)url;
 
 - (void)logout:(id<FBSessionDelegate>)delegate;

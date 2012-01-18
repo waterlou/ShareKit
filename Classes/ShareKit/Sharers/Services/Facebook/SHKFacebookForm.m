@@ -29,6 +29,9 @@
 #import "SHK.h"
 #import "SHKFacebook.h"
 
+@interface SHKFacebook(Private)
+- (void)sendForm:(SHKFacebookForm *)form;
+@end
 
 @implementation SHKFacebookForm
 

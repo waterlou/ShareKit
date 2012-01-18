@@ -17,6 +17,7 @@
 #import "Facebook.h"
 #import "FBLoginDialog.h"
 #import "FBRequest.h"
+//#import "SHKConfig.h"   // for the define
 
 static NSString* kDialogBaseURL = @"https://m.facebook.com/dialog/";
 static NSString* kGraphBaseURL = @"https://graph.facebook.com/";
@@ -218,8 +219,18 @@ static NSString* kSDKVersion = @"2";
 
   _sessionDelegate = delegate;
 
-//  [self authorizeWithFBAppAuth:YES safariAuth:YES];
-    [self authorizeWithFBAppAuth:NO safariAuth:NO];
+    [self authorizeWithFBAppAuth:YES safariAuth:YES];
+}
+
+- (void)authorize:(NSArray *)permissions
+         delegate:(id<FBSessionDelegate>)delegate singleSignOn : (BOOL) singleSignOn {
+    
+    [_permissions release];
+    _permissions = [permissions retain];
+    
+    _sessionDelegate = delegate;
+    
+    [self authorizeWithFBAppAuth:singleSignOn safariAuth:singleSignOn];
 }
 
 /**

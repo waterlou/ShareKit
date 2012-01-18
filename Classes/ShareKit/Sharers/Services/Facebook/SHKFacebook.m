@@ -46,6 +46,7 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 
 - (void)dealloc {
 	[_facebook release], _facebook = nil;
+    [permissions release];
 	[super dealloc];
 }
 
@@ -105,7 +106,7 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
      // store the pending item in NSUserDefaults as the authorize could kick the user out to the Facebook app or Safari
      [[NSUserDefaults standardUserDefaults] setObject:[self.item dictionaryRepresentation] forKey:SHKFacebookPendingItem];
      */
-	[self.facebook authorize:permissions delegate:self];
+	[self.facebook authorize:permissions delegate:self singleSignOn: NO];
 }
 
 - (void)authFinished:(SHKRequest*)request {
