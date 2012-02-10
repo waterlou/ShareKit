@@ -25,6 +25,7 @@
 //
 //
 
+/****************** NOT WORK NOW WITH NEW SDK **************************/
 
 #import "SHKDropbox.h"
 
@@ -106,9 +107,8 @@
 }
 
 + (void)logout {
-	DBSession* session = 
-	[[DBSession alloc] initWithConsumerKey:kDropboxConsumerKey consumerSecret:kDropboxConsumerSecret];
-	[session unlink];
+	DBSession* session = [[DBSession alloc] initWithAppKey:kDropboxConsumerKey appSecret:kDropboxConsumerSecret root:nil];
+	[session unlinkAll];
 	[session release];		
 }
 

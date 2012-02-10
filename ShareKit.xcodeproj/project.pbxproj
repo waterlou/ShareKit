@@ -68,6 +68,9 @@
 		43C91D1D11EB963600F31FAE /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C91D1C11EB963600F31FAE /* MainWindow-iPad.xib */; };
 		43D1DEF011D5CDD200550D75 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D1DEEF11D5CDD200550D75 /* SystemConfiguration.framework */; };
 		43EF406E11D3FFF800B1F700 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EF406D11D3FFF800B1F700 /* Security.framework */; };
+		490ADB6D14E4A19E008FF404 /* DBLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 490ADB6114E4A193008FF404 /* DBLog.m */; };
+		490ADB6E14E4A19E008FF404 /* NSDictionary+Dropbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 490ADB6414E4A197008FF404 /* NSDictionary+Dropbox.m */; };
+		490ADB6F14E4A19E008FF404 /* UIAlertView+Dropbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 490ADB6C14E4A19D008FF404 /* UIAlertView+Dropbox.m */; };
 		4917561213B3489100297793 /* SHKInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 4917560F13B3489100297793 /* SHKInstagram.m */; };
 		4917561313B3489100297793 /* SHKInstagramForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4917561113B3489100297793 /* SHKInstagramForm.m */; };
 		4923AD9A139650B2003C1E3F /* SHKPosterous.m in Sources */ = {isa = PBXBuildFile; fileRef = 4923AD92139650B2003C1E3F /* SHKPosterous.m */; };
@@ -284,6 +287,21 @@
 		43C91D1C11EB963600F31FAE /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		43D1DEEF11D5CDD200550D75 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		43EF406D11D3FFF800B1F700 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		490ADB5D14E4A154008FF404 /* DBDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBDefines.h; sourceTree = "<group>"; };
+		490ADB5F14E4A192008FF404 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		490ADB6014E4A192008FF404 /* DBLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBLog.h; sourceTree = "<group>"; };
+		490ADB6114E4A193008FF404 /* DBLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBLog.m; sourceTree = "<group>"; };
+		490ADB6214E4A194008FF404 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		490ADB6314E4A195008FF404 /* NSDictionary+Dropbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Dropbox.h"; sourceTree = "<group>"; };
+		490ADB6414E4A197008FF404 /* NSDictionary+Dropbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Dropbox.m"; sourceTree = "<group>"; };
+		490ADB6514E4A197008FF404 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		490ADB6614E4A197008FF404 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		490ADB6714E4A198008FF404 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		490ADB6814E4A19C008FF404 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		490ADB6914E4A19C008FF404 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		490ADB6A14E4A19C008FF404 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		490ADB6B14E4A19D008FF404 /* UIAlertView+Dropbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Dropbox.h"; sourceTree = "<group>"; };
+		490ADB6C14E4A19D008FF404 /* UIAlertView+Dropbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Dropbox.m"; sourceTree = "<group>"; };
 		4917560E13B3489100297793 /* SHKInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKInstagram.h; sourceTree = "<group>"; };
 		4917560F13B3489100297793 /* SHKInstagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKInstagram.m; sourceTree = "<group>"; };
 		4917561013B3489100297793 /* SHKInstagramForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKInstagramForm.h; sourceTree = "<group>"; };
@@ -980,6 +998,21 @@
 		49A92BAB138EB03500C8DDAF /* DropboxSDK */ = {
 			isa = PBXGroup;
 			children = (
+				490ADB5F14E4A192008FF404 /* Base64Transcoder.h */,
+				490ADB6014E4A192008FF404 /* DBLog.h */,
+				490ADB6114E4A193008FF404 /* DBLog.m */,
+				490ADB6214E4A194008FF404 /* JSON.h */,
+				490ADB6314E4A195008FF404 /* NSDictionary+Dropbox.h */,
+				490ADB6414E4A197008FF404 /* NSDictionary+Dropbox.m */,
+				490ADB6514E4A197008FF404 /* NSObject+SBJSON.h */,
+				490ADB6614E4A197008FF404 /* NSString+SBJSON.h */,
+				490ADB6714E4A198008FF404 /* SBJSON.h */,
+				490ADB6814E4A19C008FF404 /* SBJsonBase.h */,
+				490ADB6914E4A19C008FF404 /* SBJsonParser.h */,
+				490ADB6A14E4A19C008FF404 /* SBJsonWriter.h */,
+				490ADB6B14E4A19D008FF404 /* UIAlertView+Dropbox.h */,
+				490ADB6C14E4A19D008FF404 /* UIAlertView+Dropbox.m */,
+				490ADB5D14E4A154008FF404 /* DBDefines.h */,
 				49A92BAC138EB03500C8DDAF /* DBAccountInfo.h */,
 				49A92BAD138EB03500C8DDAF /* DBAccountInfo.m */,
 				49A92BAE138EB03500C8DDAF /* DBCreateAccountController.h */,
@@ -1532,6 +1565,9 @@
 				4987814D14B342B60058F230 /* SHKFacebookForm.m in Sources */,
 				49E2682C14B3E99200EF1C1C /* SHKGooglePlus.m in Sources */,
 				49E2689F14B63AE800EF1C1C /* SHKSSOFacebook.m in Sources */,
+				490ADB6D14E4A19E008FF404 /* DBLog.m in Sources */,
+				490ADB6E14E4A19E008FF404 /* NSDictionary+Dropbox.m in Sources */,
+				490ADB6F14E4A19E008FF404 /* UIAlertView+Dropbox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

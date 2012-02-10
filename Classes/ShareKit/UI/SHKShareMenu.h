@@ -51,6 +51,6 @@
 - (void)edit;
 - (void)save;
 
-
+- (void)logoutAll;
 
 @end

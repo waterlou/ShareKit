@@ -190,26 +190,45 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
 {
-    return tableData.count;
+    NSInteger num_of_section = tableData.count;
+#if SHKLogoutAllInMenu
+    num_of_section++;
+#endif
+    return num_of_section;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
+    if (section>=tableData.count) return 1; // logout
     return [[tableData objectAtIndex:section] count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {    
+    if (indexPath.section>=tableData.count) {
+        // logout
+        static NSString *CellIdentifier = @"LogoutCell";        
+        SHKCustomShareMenuCell *cell = (SHKCustomShareMenuCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[[SHKCustomShareMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+            cell.textLabel.text = SHKLocalizedString(@"Logout of All Services");
+            cell.textLabel.textAlignment = UITextAlignmentCenter;
+        }        
+        // logout
+        return cell;
+    }
+
     static NSString *CellIdentifier = @"Cell";
     
     SHKCustomShareMenuCell *cell = (SHKCustomShareMenuCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
 	{
         cell = [[[SHKCustomShareMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
+
     
 	NSDictionary *rowData = [self rowDataAtIndexPath:indexPath];
 	cell.textLabel.text = [rowData objectForKey:@"name"];
@@ -246,6 +265,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+    if (indexPath.section>=tableData.count) {
+		[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        // logout all service
+        [self logoutAll];
+        return;
+    }
+    
 	NSDictionary *rowData = [self rowDataAtIndexPath:indexPath];
 	
 	if (tableView.editing)
@@ -280,6 +306,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    if (section>=tableData.count) return nil;   // logout button
+    
 	if ([[tableData objectAtIndex:section] count])
 	{
 		if (section == 0)
@@ -323,6 +351,25 @@
 																							  target:self
 																							  action:@selector(edit)] autorelease] animated:YES];
 	
+}
+
+#pragma mark -
+
+- (void)logoutAll
+{
+	[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Logout")
+								 message:SHKLocalizedString(@"Are you sure you want to logout of all share services?")
+								delegate:self
+					   cancelButtonTitle:SHKLocalizedString(@"Cancel")
+					   otherButtonTitles:SHKLocalizedString(@"Logout"),nil] autorelease] show];
+	
+	[SHK logoutOfAll];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == 0)
+		[SHK logoutOfAll];
 }
 
 @end
