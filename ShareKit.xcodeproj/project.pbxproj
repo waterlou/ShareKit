@@ -78,6 +78,7 @@
 		4923AD9C139650B2003C1E3F /* SHKPlurk.m in Sources */ = {isa = PBXBuildFile; fileRef = 4923AD97139650B2003C1E3F /* SHKPlurk.m */; };
 		4923AD9D139650B2003C1E3F /* SHKPlurkForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 4923AD99139650B2003C1E3F /* SHKPlurkForm.m */; };
 		4924798B137C34BF00F423DE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4924798A137C34BF00F423DE /* CFNetwork.framework */; };
+		4932AECD1510689700E39001 /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4932AECC1510689700E39001 /* FBFrictionlessRequestSettings.m */; };
 		49375632138B942E003F594D /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49375631138B942E003F594D /* ShareKit.bundle */; };
 		49559CBB137CB68400BAF754 /* SHKFBLikeDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 49559CB9137CB68400BAF754 /* SHKFBLikeDialog.m */; };
 		49559CD1137CB74F00BAF754 /* SocialMedia.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49559CD0137CB74F00BAF754 /* SocialMedia.bundle */; };
@@ -315,6 +316,8 @@
 		4923AD98139650B2003C1E3F /* SHKPlurkForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKPlurkForm.h; sourceTree = "<group>"; };
 		4923AD99139650B2003C1E3F /* SHKPlurkForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKPlurkForm.m; sourceTree = "<group>"; };
 		4924798A137C34BF00F423DE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4932AECB1510689600E39001 /* FBFrictionlessRequestSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFrictionlessRequestSettings.h; sourceTree = "<group>"; };
+		4932AECC1510689700E39001 /* FBFrictionlessRequestSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBFrictionlessRequestSettings.m; sourceTree = "<group>"; };
 		49375631138B942E003F594D /* ShareKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareKit.bundle; sourceTree = "<group>"; };
 		49559CB9137CB68400BAF754 /* SHKFBLikeDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKFBLikeDialog.m; sourceTree = "<group>"; };
 		49559CBA137CB68400BAF754 /* SHKFBLikeDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKFBLikeDialog.h; sourceTree = "<group>"; };
@@ -1200,6 +1203,8 @@
 		49A92C21138EB03600C8DDAF /* facebook-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
+				4932AECB1510689600E39001 /* FBFrictionlessRequestSettings.h */,
+				4932AECC1510689700E39001 /* FBFrictionlessRequestSettings.m */,
 				49A92C22138EB03600C8DDAF /* Facebook.h */,
 				49A92C23138EB03600C8DDAF /* Facebook.m */,
 				49A92C24138EB03600C8DDAF /* FBConnect.h */,
@@ -1568,6 +1573,7 @@
 				490ADB6D14E4A19E008FF404 /* DBLog.m in Sources */,
 				490ADB6E14E4A19E008FF404 /* NSDictionary+Dropbox.m in Sources */,
 				490ADB6F14E4A19E008FF404 /* UIAlertView+Dropbox.m in Sources */,
+				4932AECD1510689700E39001 /* FBFrictionlessRequestSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

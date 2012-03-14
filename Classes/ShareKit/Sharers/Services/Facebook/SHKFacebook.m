@@ -28,6 +28,10 @@
 #import "SHKFacebook.h"
 #import "SHKFacebookForm.h"
 
+@interface SHKFacebook()
+- (void)showFacebookForm;
+@end
+
 @implementation SHKFacebook
 
 @synthesize pendingFacebookAction;
@@ -52,7 +56,7 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 
 - (Facebook*)facebook {
 	if (!_facebook) {
-		_facebook = [[Facebook alloc] initWithAppId:SHKFacebookAppID];
+		_facebook = [[Facebook alloc] initWithAppId:SHKFacebookAppID andDelegate:self];
 		_facebook.sessionDelegate = self;
 		_facebook.accessToken = [self getAuthValueForKey:SHKFacebookAccessToken];
 		_facebook.expirationDate = (NSDate*)[[NSUserDefaults standardUserDefaults] objectForKey:SHKFacebookExpirationDate];
@@ -106,17 +110,18 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
      // store the pending item in NSUserDefaults as the authorize could kick the user out to the Facebook app or Safari
      [[NSUserDefaults standardUserDefaults] setObject:[self.item dictionaryRepresentation] forKey:SHKFacebookPendingItem];
      */
-	[self.facebook authorize:permissions delegate:self singleSignOn: NO];
+	[self.facebook authorize:permissions singleSignOn: NO];
 }
 
 - (void)authFinished:(SHKRequest*)request {
 }
 
 + (void)logout {
-	Facebook *fb = [[[Facebook alloc] initWithAppId:SHKFacebookAppID] autorelease];
+    SHKFacebook *shkfb = [[SHKFacebook alloc] init];
+	Facebook *fb = [[[Facebook alloc] initWithAppId:SHKFacebookAppID andDelegate:shkfb] autorelease];
 	fb.accessToken = [[[[self alloc] init] autorelease] getAuthValueForKey:SHKFacebookAccessToken];
 	fb.expirationDate = (NSDate*)[[NSUserDefaults standardUserDefaults] objectForKey:SHKFacebookExpirationDate];
-	[fb logout:self];
+	[fb logout:shkfb];
     
 	[SHK removeAuthValueForKey:SHKFacebookAccessToken forSharer:[self sharerId]];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:SHKFacebookExpirationDate];
@@ -227,6 +232,7 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 
 #pragma mark -
 #pragma mark FBSessionDelegate methods
+
 - (void)fbDidLogin {
 	// store the Facebook credentials for use in future requests
 	[SHK setAuthValue:self.facebook.accessToken forKey:SHKFacebookAccessToken forSharer:[self sharerId]];
@@ -252,6 +258,16 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 
 - (void)fbDidLogout {
 	// not handling this
+    [self autorelease]; // we didn't release it
+}
+
+- (void)fbDidExtendToken:(NSString*)accessToken
+               expiresAt:(NSDate*)expiresAt {
+
+}
+
+- (void)fbSessionInvalidated {
+    
 }
 
 #pragma mark -
@@ -264,6 +280,7 @@ static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
 	[self sendDidFailWithError:error];
 }
+
 
 #pragma mark -
 
