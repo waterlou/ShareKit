@@ -169,6 +169,8 @@
 		49A92CA9138EB03600C8DDAF /* SHKTwitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A92C55138EB03600C8DDAF /* SHKTwitter.m */; };
 		49A92CAA138EB03600C8DDAF /* SHKTwitterForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A92C57138EB03600C8DDAF /* SHKTwitterForm.m */; };
 		49C40964137A5E0000DAE4DA /* ShareKit.Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49C40959137A5E0000DAE4DA /* ShareKit.Localizable.strings */; };
+		49CD8090151DC7D300FC02AB /* SHKTwitteriOS5.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CD808F151DC7D300FC02AB /* SHKTwitteriOS5.m */; };
+		49CD8092151DC88E00FC02AB /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CD8091151DC88D00FC02AB /* Twitter.framework */; };
 		49E2682C14B3E99200EF1C1C /* SHKGooglePlus.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2682B14B3E99200EF1C1C /* SHKGooglePlus.m */; };
 		49E2689F14B63AE800EF1C1C /* SHKSSOFacebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E2689E14B63AE700EF1C1C /* SHKSSOFacebook.m */; };
 /* End PBXBuildFile section */
@@ -503,6 +505,9 @@
 		49C40961137A5E0000DAE4DA /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/ShareKit.Localizable.strings; sourceTree = "<group>"; };
 		49C40962137A5E0000DAE4DA /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = zh_CN.lproj/ShareKit.Localizable.strings; sourceTree = "<group>"; };
 		49C40963137A5E0000DAE4DA /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = zh_TW.lproj/ShareKit.Localizable.strings; sourceTree = "<group>"; };
+		49CD808E151DC7D300FC02AB /* SHKTwitteriOS5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKTwitteriOS5.h; sourceTree = "<group>"; };
+		49CD808F151DC7D300FC02AB /* SHKTwitteriOS5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKTwitteriOS5.m; sourceTree = "<group>"; };
+		49CD8091151DC88D00FC02AB /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		49E2682A14B3E99200EF1C1C /* SHKGooglePlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKGooglePlus.h; sourceTree = "<group>"; };
 		49E2682B14B3E99200EF1C1C /* SHKGooglePlus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKGooglePlus.m; sourceTree = "<group>"; };
 		49E2689D14B63AE600EF1C1C /* SHKSSOFacebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKSSOFacebook.h; sourceTree = "<group>"; };
@@ -515,6 +520,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49CD8092151DC88E00FC02AB /* Twitter.framework in Frameworks */,
 				4924798B137C34BF00F423DE /* CFNetwork.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -548,7 +554,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				4924798A137C34BF00F423DE /* CFNetwork.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -583,6 +588,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49CD8091151DC88D00FC02AB /* Twitter.framework */,
+				4924798A137C34BF00F423DE /* CFNetwork.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
@@ -974,6 +981,7 @@
 				49A92C4A138EB03600C8DDAF /* Pinboard */,
 				49A92C4D138EB03600C8DDAF /* Read It Later */,
 				49A92C50138EB03600C8DDAF /* Tumblr */,
+				49CD808C151DC79200FC02AB /* TwitteriOS5 */,
 				49A92C53138EB03600C8DDAF /* Twitter */,
 			);
 			path = Services;
@@ -1339,6 +1347,15 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		49CD808C151DC79200FC02AB /* TwitteriOS5 */ = {
+			isa = PBXGroup;
+			children = (
+				49CD808E151DC7D300FC02AB /* SHKTwitteriOS5.h */,
+				49CD808F151DC7D300FC02AB /* SHKTwitteriOS5.m */,
+			);
+			path = TwitteriOS5;
+			sourceTree = "<group>";
+		};
 		49E2682914B3E98D00EF1C1C /* GooglePlus */ = {
 			isa = PBXGroup;
 			children = (
@@ -1574,6 +1591,7 @@
 				490ADB6E14E4A19E008FF404 /* NSDictionary+Dropbox.m in Sources */,
 				490ADB6F14E4A19E008FF404 /* UIAlertView+Dropbox.m in Sources */,
 				4932AECD1510689700E39001 /* FBFrictionlessRequestSettings.m in Sources */,
+				49CD8090151DC7D300FC02AB /* SHKTwitteriOS5.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,6 +27,8 @@
 
 #import "SHKSSOFacebook.h"
 
+static NSString *const SHKFacebookPendingItem = @"SHKFacebookPendingItem";
+
 @implementation SHKSSOFacebook
 
 - (Facebook*)facebook {
@@ -35,10 +37,31 @@
 }
 
 - (void)promptAuthorization {
+    // store the pending item in NSUserDefaults as the authorize could kick the user out to the Facebook app or Safari
+    [[NSUserDefaults standardUserDefaults] setObject:[self.item dictionaryRepresentation] forKey:SHKFacebookPendingItem];
+    
     // TODO: click off SSO
+    id<UIApplicationDelegate> delegate = [[UIApplication sharedApplication] delegate];
+    [delegate performSelector:@selector(authorizeFacebook:delegate:) withObject: permissions withObject:self];
+}
+
+- (void) application : (id<UIApplicationDelegate>)delegate facebookLoginSucceeded : (Facebook*)facebook {
+	// if the current device does not support multitasking, the shared item will still be set and we can skip restoring the item
+	// if the current device does support multitasking, this instance of SHKFacebook will be different that the original one and we need to restore the shared item
+	UIDevice *device = [UIDevice currentDevice];
+	if ([device respondsToSelector:@selector(isMultitaskingSupported)] && [device isMultitaskingSupported]) {
+        NSDictionary *dictionary = [[NSUserDefaults standardUserDefaults] objectForKey:SHKFacebookPendingItem];
+        if (dictionary) {
+            self.item = [SHKItem itemFromDictionary:dictionary];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:SHKFacebookPendingItem];
+        }
+	}
+    
+	[self share];    
 }
 
 - (void)authFinished:(SHKRequest*)request {
+    
 }
 
 + (void)logout {
