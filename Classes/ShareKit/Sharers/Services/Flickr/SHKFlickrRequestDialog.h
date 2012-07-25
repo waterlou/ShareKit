@@ -11,6 +11,7 @@
 #import "ObjectiveFlickr.h"
 
 @class SHKFlickrRequestDialog;
+@protocol OFFlickrAPIRequestDelegate;
 
 @protocol SHKFlickrRequestDialogControllerDelegate<NSObject>
 
